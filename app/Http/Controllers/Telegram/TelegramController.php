@@ -12,11 +12,11 @@ class TelegramController extends Controller
 
 
         $response = Telegram::senMessage([
-            'chat_id' => '',
+            'chat_id' => '-4280219646',
             'text' => 'yyyyy'
         ]);
 
         return $response;
-   
+
     }
 }
