@@ -17,4 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('telegram', [TelegramController::class, 'telegram'])->name('telegram');
+Route::get('telegram', TelegramController::class);

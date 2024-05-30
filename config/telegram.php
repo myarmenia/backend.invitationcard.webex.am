@@ -32,11 +32,10 @@ return [
     */
     'bots' => [
         'mybot' => [
-            'username' => 'Test_canalforwebbot',
-            'token' => '1866939921:AAHSjUDSjOw8cH1Eq6geXhBcTkFC1FpzKMk',
+            'token' => env('TELEGRAM_BOT_TOKEN'),
+            // 'token' => env('TELEGRAM_BOT_TOKEN', 'YOUR-BOT-TOKEN'),
             'certificate_path' => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
-            'webhook_url' => 'http://localhost:8000/42yUojv1YQPOssPEpn5i3q6vjdhh7hl7djVWDIAVhFDRMAwZ1tj0Og2v4PWyj4PZ/webhook',
-            // 'webhook_url' => env('TELEGRAM_WEBHOOK_URL', 'YOUR-BOT-WEBHOOK-URL'),
+            'webhook_url' => env('TELEGRAM_WEBHOOK_URL', 'YOUR-BOT-WEBHOOK-URL'),
             /*
              * @see https://core.telegram.org/bots/api#update
              */
