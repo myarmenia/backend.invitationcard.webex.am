@@ -25,6 +25,6 @@ use Illuminate\Support\Facades\Route;
 Route::post('form', FormController::class);
 Route::get('payment-result', ResultController::class);
 Route::post('event-result', EventResultController::class);
-Route::get('telegram', TelegramController::class);
+Route::get('telegram', [TelegramController::class, 'telegram'])->name('telegram');
 
 

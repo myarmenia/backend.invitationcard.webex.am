@@ -1128,7 +1128,7 @@
                 "telegram sdk"
             ],
             "support": {
-                "issues": "https://github.com/irazasyed/telegram-bot-sdk/issues",
+                "issues": "https://github.com/irazasyed/telegram--sdk/issues",
                 "source": "https://github.com/irazasyed/telegram-bot-sdk/tree/v3.14.0"
             },
             "time": "2024-03-11T03:11:26+00:00"
