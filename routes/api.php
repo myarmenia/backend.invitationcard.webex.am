@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\Web\EventResultController;
 use App\Http\Controllers\API\Web\FormController;
 use App\Http\Controllers\API\Web\Payment\ResultController;
+use App\Http\Controllers\Telegram\TelegramController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,4 +25,6 @@ use Illuminate\Support\Facades\Route;
 Route::post('form', FormController::class);
 Route::get('payment-result', ResultController::class);
 Route::post('event-result', EventResultController::class);
+Route::get('telegram', TelegramController::class);
+
 

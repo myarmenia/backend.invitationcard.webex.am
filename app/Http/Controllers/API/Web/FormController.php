@@ -22,6 +22,9 @@ class FormController extends BaseController
         // $table->string('language');
         // $table->string('sound_path')->nullable();
         // $table->string('date');
+        $lang = $request->header('Accept-Language') ?? 'am';
+        $request['language'] = $lang;
+     
         $create_form = $this->createForm($request->all());
 
         if($create_form){

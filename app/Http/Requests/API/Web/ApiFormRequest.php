@@ -25,7 +25,6 @@ class ApiFormRequest extends FormRequest
 
         return [
             'template_id' => 'required',
-            'language' => 'required',
             'date' => 'required|date',
         ];
 
