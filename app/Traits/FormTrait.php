@@ -1,5 +1,6 @@
 <?php
 namespace App\Traits;
+use App\Models\ClientFeedback;
 use App\Models\Form;
 use App\Models\Image;
 use App\Models\Section;
@@ -14,20 +15,28 @@ trait FormTrait {
             'invitation_name' => $data['invitation_name'],
             'template_id' => $data['template_id'],
             'language' => $data['language'],
-            'date' => $data['date']
+            'date' => $data['date'],
+            'sound_path' => $data['date'] ?? null
         ];
 
         $form = Form::create($form_data);
 
-        // ======== add sound path ======================
-        if(isset($data['sound_path'])){
-            $sound_path = FileUploadService::upload($data['sound_path'], 'sound/' . $form->id);
-            $form->update(['sound_path' => $sound_path]);
-        }
+        // ======== add logo path ======================
 
         if (isset($data['logo_path'])) {
-            $logo_path = FileUploadService::upload($data['logo_path'], 'logo/' . $form->id);
+            $logo_path = FileUploadService::uploadBase64($data['logo_path'], 'logo/' . $form->id);
+
             $form->update(['logo_path' => $logo_path]);
+        }
+
+        if (isset($data['feedback'])) {
+
+            ClientFeedback::create([
+                'form_id' => $form->id,
+                'type' => $data['type'] ?? 'whatsapp',
+                'feedback' => $data['feedback']
+            ]);
+
         }
 
         if(isset($data['sections'])){
@@ -58,8 +67,10 @@ trait FormTrait {
                 $section = Section::create($sec);
 
                 if (count($images) > 0) {
-                    foreach ($sec['images'] as $image) {
-                        $image_path = FileUploadService::upload($image, "forms/$form_id/sections/$section->id");
+
+                    foreach ($images as $image) {
+                        $image_path = FileUploadService::uploadBase64($image, "forms/$form_id/sections/$section->id");
+
                         Image::create([
                             'section_id' => $section->id,
                             'path' => $image_path

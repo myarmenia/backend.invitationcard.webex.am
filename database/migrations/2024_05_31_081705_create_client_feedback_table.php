@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('client_feedback', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('form_id');
+            $table->unsignedBigInteger('form_id')->nullable();
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('form_type');
-            $table->string('order_id')->nullable();
-            $table->integer('amount')->nullable();
-            $table->string('link')->nullable();
-            $table->string('language');
-            $table->string('status')->default(0);
+            $table->string('feedback');
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('client_feedback');
     }
 };

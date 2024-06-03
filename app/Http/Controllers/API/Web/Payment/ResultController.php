@@ -32,8 +32,6 @@ class ResultController extends Controller
                 </script>";
             }
 
-            $payment_completion = $this->paymentCompletion($payment_result, $order_number);
-            return $payment_completion;
 
         }else{
             echo "<script type='text/javascript'>

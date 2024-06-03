@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Web\ClientFeedbackController;
 use App\Http\Controllers\API\Web\EventResultController;
 use App\Http\Controllers\API\Web\FormController;
 use App\Http\Controllers\API\Web\Payment\ResultController;
@@ -27,4 +28,5 @@ Route::get('payment-result', ResultController::class);
 Route::post('event-result', EventResultController::class);
 Route::get('telegram', TelegramController::class);
 
+Route::post('client-feedback', ClientFeedbackController::class);
 
