@@ -15,13 +15,15 @@ trait CheckPaymentStatusTrait
         $order = Order::where('order_id', $order_id)->first();
 
         $response = Http::withOptions(['verify' => false])->asForm()->post(
-            'https://ipaytest.arca.am:8445/payment/rest/deposit.do',
+            'https://ipay.arca.am/payment/rest/deposit.do',
 
             [
-                'userName' => 'gorcka_api',
-                'password' => 'Nokia6300',
+                // 'userName' => 'gorcka_api',
+                // 'password' => 'Nokia6300',
                 // 'userName' => '34558260_api',
                 // 'password' => 'Ah0545139',
+                'userName' => env('ACBA_USER_NAME'),
+                'password' => env('ACBA_PASSWORD'),
                 'orderId' => $order_id,
                 'amount' => $order->amount * 100,
                 'currency' => '051',
