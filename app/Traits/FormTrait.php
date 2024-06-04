@@ -17,7 +17,7 @@ trait FormTrait {
             'template_route' => $data['template_route'],
             'language' => $data['language'],
             'date' => $data['date'],
-            'sound_path' => $data['date'] ?? null
+            'sound_path' => $data['sound_path'] ?? null
         ];
 
         $form = Form::create($form_data);

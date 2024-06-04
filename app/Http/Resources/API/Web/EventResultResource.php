@@ -21,7 +21,7 @@ class EventResultResource extends JsonResource
             "invitation_name" => $this->invitation_name,
             "lang" => "am",
             "date" => $this->date,
-            "sound_path" => Storage::url($this->sound_path),
+            "sound_path" => $this->sound_path,
             "logo_path" => Storage::url($this->logo_path),
             "sections" => SectionsResource::collection($this->sections)
 

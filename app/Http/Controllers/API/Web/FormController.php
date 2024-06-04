@@ -17,14 +17,10 @@ class FormController extends BaseController
     use FormTrait, PaymentRegister, PaymentTrait, OrderTrait;
     public function __invoke(ApiFormRequest $request){
 
-        // $table->unsignedBigInteger('template_id');
-        // $table->foreign('template_id')->references('id')->on('templates')->onUpdate('cascade');
-        // $table->string('language');
-        // $table->string('sound_path')->nullable();
-        // $table->string('date');
+        
         $lang = $request->header('Accept-Language') ?? 'am';
         $request['language'] = $lang;
-     
+
         $create_form = $this->createForm($request->all());
 
         if($create_form){

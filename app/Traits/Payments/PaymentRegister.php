@@ -15,17 +15,20 @@ trait PaymentRegister
 
         $amount = 10;
 
-        $response = Http::withOptions(['verify' => false])->asForm()->post('https://ipaytest.arca.am:8445/payment/rest/register.do',
-                // 'https://ipay.arca.am/payment/rest/register.do',
+        $response = Http::withOptions(['verify' => false])->asForm()->post(
+            // 'https://ipaytest.arca.am:8445/payment/rest/register.do',
+                'https://ipay.arca.am/payment/rest/register.do',
                 [
-                    'userName'=>'gorcka_api',
-                    'password' => 'Nokia6300',
+                    // 'userName'=>'gorcka_api',
+                    // 'password' => 'Nokia6300',
                     // 'userName' => '34558260_api',
                     // 'password' => 'Ah0545139',
+                    'userName' => '34549151_api',
+                    'password' => '4HQPFP6kC99bura',
                     'amount' => $amount * 100,
                     'currency' => '051',
                     'language' => 'en',
-                    'orderNumber' => 'k'.$data->id,
+                    'orderNumber' => 'k_'.$data->id,
                     'returnUrl' => url('') . '/api/payment-result'
 
                 ]
