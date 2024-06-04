@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('template_id');
             $table->foreign('template_id')->references('id')->on('templates')->onUpdate('cascade');
+            $table->string('template_route');
             $table->string('invitation_name');
             $table->string('language');
             $table->string('logo_path')->nullable();

@@ -13,7 +13,7 @@ class ResultController extends Controller
     public function __invoke(Request $request)
     {
 
-        $order_number = $request->order_number;
+        $order_number = $request->orderId;
         $payment_result = $this->checkStatus($order_number);
 
         if ($payment_result) {
@@ -21,21 +21,24 @@ class ResultController extends Controller
             if($payment_result['error_code'] == 0){
 
                 $link = $this->generateLink($order_number);
+
+                
+
                 echo "<script type='text/javascript'>
-                    window.location = 'https://event.webex.am?$link'
+                    window.location = 'https://invitationcard.webex.am/am/wedding1?$link'
                 </script>";
             }
             else{
 
                 echo "<script type='text/javascript'>
-                    window.location = 'https://event.webex.am?error-message=$payment_result[error_message]'
+                    window.location = 'https://invitationcard.webex.am/am/wedding1?error-message=$payment_result[error_message]'
                 </script>";
             }
 
 
         }else{
             echo "<script type='text/javascript'>
-                    window.location = 'https://event.webex.am?error-message=urishtext'
+                    window.location = 'https://invitationcard.webex.am/am/wedding1?error-message=urishtext'
                 </script>";
 
         }

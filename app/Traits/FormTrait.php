@@ -14,6 +14,7 @@ trait FormTrait {
         $form_data = [
             'invitation_name' => $data['invitation_name'],
             'template_id' => $data['template_id'],
+            'template_route' => $data['template_route'],
             'language' => $data['language'],
             'date' => $data['date'],
             'sound_path' => $data['date'] ?? null
