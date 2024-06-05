@@ -26,7 +26,7 @@ class SectionsResource extends JsonResource
             "time" => $this->time,
             "address" => $this->address,
             "address_link" => $this->address_link,
-            "images" => Storage::path($this->images->path)
+            "images" => ImagesResourse::collection($this->images)
 
         ];
     }
