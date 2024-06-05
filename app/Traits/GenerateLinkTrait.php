@@ -1,7 +1,8 @@
 <?php
 namespace App\Traits;
 
-use App\Helpers\Sendpulse\WhatsAppAPI;
+
+use App\Helpers\WhatsAppAPI;
 use App\Models\Form;
 use App\Models\Image;
 use App\Models\Order;

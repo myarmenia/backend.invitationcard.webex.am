@@ -22,23 +22,23 @@ class ResultController extends Controller
 
                 $link = $this->generateLink($order_number);
 
-                
+
 
                 echo "<script type='text/javascript'>
-                    window.location = 'https://invitationcard.webex.am/am/wedding1?$link'
+                    window.location = 'https://invitationcard.webex.am/am/wedding1?event_url=$link'
                 </script>";
             }
             else{
 
                 echo "<script type='text/javascript'>
-                    window.location = 'https://invitationcard.webex.am/am/wedding1?error-message=$payment_result[error_message]'
+                    window.location = 'https://invitationcard.webex.am/am/wedding1?error'
                 </script>";
             }
 
 
         }else{
             echo "<script type='text/javascript'>
-                    window.location = 'https://invitationcard.webex.am/am/wedding1?error-message=urishtext'
+                    window.location = 'https://invitationcard.webex.am/am/wedding1?errort'
                 </script>";
 
         }

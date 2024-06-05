@@ -22,11 +22,19 @@ class ClientFeedbackRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'fullname' => 'required',
-            'type' => 'required',
+
+        $data = [
+            'token' => 'required',
+            'visit' => 'required',
+            'guest_name' => 'required'
 
         ];
+
+        if( $this->visit){
+            $data['guest_quantity'] = 'required';
+        }
+
+        return $data;
     }
 
     protected function failedValidation(Validator $validator)

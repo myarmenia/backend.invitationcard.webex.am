@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\Sendpulse;
+namespace App\Helpers;
 use GuzzleHttp\Client;
 
 
@@ -35,7 +35,7 @@ class WhatsAppAPI
             if ($response_data->status == 'done') {
                 return true;
             }
-            
+
             return false;
 
         }
