@@ -16,7 +16,7 @@ class ImagesResourse extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "path" => Storage::disk('local')->path($this->path)
+            "path" => url('') . Storage::disk('local')->url($this->path)
         ];
     }
 }
