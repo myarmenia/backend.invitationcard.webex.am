@@ -45,7 +45,7 @@ trait PaymentRegister
                     $order_id = $response_data->orderId;
                     $order = [
                         'form_id' => $data->id,
-                        'form_type' => $data->template->category->name,
+                        'form_type' => $data->template->category->key,
                         'order_id' => $order_id,
                         'amount' => $amount,
                         'language' => $data->language
