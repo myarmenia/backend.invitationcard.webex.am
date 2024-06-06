@@ -20,4 +20,9 @@ class Form extends Model
     {
         return $this->hasMany(Section::class);
     }
+
+    public function feedback()
+    {
+        return $this->hasOne(ClientFeedback::class);
+    }
 }

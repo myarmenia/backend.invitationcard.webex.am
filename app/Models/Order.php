@@ -20,9 +20,6 @@ class Order extends Model
         return $this->belongsTo(Form::class, 'form_id');
     }
 
-    public function feedback()
-    {
-        return $this->hasOne(ClientFeedback::class);
-    }
+    
 
 }
