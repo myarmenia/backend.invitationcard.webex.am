@@ -16,7 +16,7 @@ trait GenerateLinkTrait
     {
         $app_fron_url = env('APP_FRONT_URL');
         $order = Order::where('order_id', $order_id)->first();
-        $lang = $order->form->lang;
+        $lang = $order->form->language ?? 'am';
         $template_route = $order->form->template_route;
         $link_name = $order->form->invitation_name;
         $feedback = $order->form->feedback->feedback;
