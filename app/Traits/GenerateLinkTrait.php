@@ -19,9 +19,9 @@ trait GenerateLinkTrait
         $lang = $order->form->lang;
         $template_route = $order->form->template_route;
         $link_name = $order->form->invitation_name;
-        $feedback = $order->form->feedback;
+        $feedback = $order->form->feedback->feedback;
 
-        $link = "$app_fron_url/$lang/$template_route/?$link_name&token=$order_id";
+        $link = "$app_fron_url$lang$template_route?$link_name&token=$order_id";
 
         $order->update(['link' => $link]);
 
