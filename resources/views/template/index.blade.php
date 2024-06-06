@@ -18,9 +18,9 @@
 
     <div class="card pt-4">
         <div class="card-body">
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end mb-3">
 
-                <a href=""><button type="button" class="btn btn-primary">Create template</button></a>
+                <a href="{{ route('template.create') }}"><button type="button" class="btn btn-primary">Create template</button></a>
             </div>
 
             <table class="table table-bordered border-primary">

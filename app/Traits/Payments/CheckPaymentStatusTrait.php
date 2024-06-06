@@ -14,8 +14,8 @@ trait CheckPaymentStatusTrait
         $result_data = false;
         $order = Order::where('order_id', $order_id)->first();
 
-        $response = Http::withOptions(['verify' => false])->asForm()->post(
-            'https://ipay.arca.am/payment/rest/deposit.do',
+        $response = Http::withOptions(['verify' => false])->asForm()->get(
+            'https://ipay.arca.am/payment/rest/getOrderStatusExtended.do',
 
             [
                 // 'userName' => 'gorcka_api',
@@ -25,8 +25,6 @@ trait CheckPaymentStatusTrait
                 'userName' => env('ACBA_USER_NAME'),
                 'password' => env('ACBA_PASSWORD'),
                 'orderId' => $order_id,
-                'amount' => $order->amount * 100,
-                'currency' => '051',
                 'language' => 'ru',
 
             ]
@@ -39,10 +37,10 @@ trait CheckPaymentStatusTrait
 
             $response = '';
             if ($response_data->errorCode == 0) {
-
-
-                $order->update(['status' => 1]);
-                $order->payment->update(['status' => 'confirmed']);
+                if($response_data->paymentAmountInfo->paymentState == "DEPOSITED"){
+                    $order->update(['status' => 1]);
+                    $order->payment->update(['status' => 'confirmed']);
+                }
 
             } else {
 

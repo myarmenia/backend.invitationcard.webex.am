@@ -43,6 +43,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::name('template.')->group(function () {
         Route::prefix('template')->group(function () {
             Route::get('', TemplateCantroller::class)->name('index');
+            Route::get('create', TemplateCantroller::class)->name('crete');
+
         });
     });
 
