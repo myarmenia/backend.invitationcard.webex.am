@@ -16,22 +16,22 @@ class CategorySeeder extends Seeder
         $categories = [
             [
                 'id' => 1,
-                'name' => 'wedding',
+                'key' => 'wedding',
             ],
             [
                 'id' => 2,
-                'name' => 'birthday',
+                'key' => 'birthday',
             ],
             [
                 'id' => 3,
-                'name' => 'event',
+                'key' => 'event',
             ]
         ];
 
         foreach ($categories as $key => $category) {
             Category::updateOrCreate([
                 'id' => $category['id'],
-                'name' => $category['name']
+                'key' => $category['key']
             ]);
 
         }

@@ -16,22 +16,22 @@ class TemplatesSeeder extends Seeder
         $templates = [
             [
                 'category_id' => 1,
-                'name' => 'wedding',
+                'key' => 'wedding',
             ],
             [
                 'category_id' => 2,
-                'name' => 'birthday',
+                'key' => 'birthday',
             ],
             [
                 'category_id' => 3,
-                'name' => 'event',
+                'key' => 'event',
             ]
         ];
 
         foreach ($templates as $key => $template) {
             Template::updateOrCreate([
                 'category_id' => $template['category_id'],
-                'name' => $template['name']
+                'key' => $template['key']
             ]);
 
         }
