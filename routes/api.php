@@ -22,11 +22,12 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+Route::group(['middleware' => ['setlang']], function ($router) {
+    Route::post('form', FormController::class);
+    Route::get('payment-result', ResultController::class);
+    Route::get('event-result', EventResultController::class);
+    Route::get('telegram', TelegramController::class);
 
-Route::post('form', FormController::class);
-Route::get('payment-result', ResultController::class);
-Route::get('event-result', EventResultController::class);
-Route::get('telegram', TelegramController::class);
-
-Route::post('client-feedback', ClientFeedbackController::class);
+    Route::post('client-feedback', ClientFeedbackController::class);
+});
 

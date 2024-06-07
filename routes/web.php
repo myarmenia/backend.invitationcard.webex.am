@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Category\CategoryCantroller;
+use App\Http\Controllers\Admin\Template\CreateController;
 use App\Http\Controllers\Admin\Template\TemplateCantroller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Telegram\TelegramController;
@@ -43,7 +44,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::name('template.')->group(function () {
         Route::prefix('template')->group(function () {
             Route::get('', TemplateCantroller::class)->name('index');
-            Route::get('create', TemplateCantroller::class)->name('crete');
+            Route::get('create', CreateController::class)->name('create');
 
         });
     });
