@@ -12,4 +12,9 @@ class Category extends Model
     public function templates(){
         return $this->hasMany(Template::class);
     }
+
+    public function translation()
+    {
+        return $this->hasOne(CategoryTranslation::class)->where('lang', app()->getLocale());
+    }
 }

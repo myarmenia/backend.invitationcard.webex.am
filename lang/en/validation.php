@@ -160,7 +160,7 @@ return [
 
     'attributes' => [
       'email' => 'email',
-
+      'translations.*.name' => 'name'
     ],
 
 ];

@@ -13,27 +13,27 @@ class TemplatesSeeder extends Seeder
      */
     public function run(): void
     {
-        $templates = [
-            [
-                'category_id' => 1,
-                'key' => 'wedding',
-            ],
-            [
-                'category_id' => 2,
-                'key' => 'birthday',
-            ],
-            [
-                'category_id' => 3,
-                'key' => 'event',
-            ]
-        ];
+        // $templates = [
+        //     [
+        //         'category_id' => 1,
+        //         'key' => 'wedding',
+        //     ],
+        //     [
+        //         'category_id' => 2,
+        //         'key' => 'birthday',
+        //     ],
+        //     [
+        //         'category_id' => 3,
+        //         'key' => 'event',
+        //     ]
+        // ];
 
-        foreach ($templates as $key => $template) {
-            Template::updateOrCreate([
-                'category_id' => $template['category_id'],
-                'key' => $template['key']
-            ]);
+        // foreach ($templates as $key => $template) {
+        //     Template::updateOrCreate([
+        //         'category_id' => $template['category_id'],
+        //         'key' => $template['key']
+        //     ]);
 
-        }
+        // }
     }
 }

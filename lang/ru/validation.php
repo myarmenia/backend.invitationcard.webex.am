@@ -151,6 +151,8 @@ return [
     */
 
     'attributes' => [
-        "email" => "Эл. почта"
+        "email" => "Эл. почта",
+        'translations.*.name' => 'имя',
+        'image_path' => 'изображение'
     ]
 ];

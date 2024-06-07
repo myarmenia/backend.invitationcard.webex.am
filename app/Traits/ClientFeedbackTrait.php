@@ -12,8 +12,8 @@ trait ClientFeedbackTrait
     public function sendMessage(array $data)
     {
         $token = $data['token'];
-        // $feedback = Order::where('token', $token)->first()->feedback;
-        $feedback = '37499116665';
+        $feedback = Order::where('token', $token)->first()->feedback;
+        // $feedback = '37499116665';
 
         $res = $data['visit'] ? 'կգանք' : 'չենք կարող գալ';
         $guest_quantity = $data['visit'] ? "Հյուրերի թիվը: $data[guest_quantity]" : '';
