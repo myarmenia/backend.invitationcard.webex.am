@@ -20,4 +20,13 @@ class Template extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
+    public function translation()
+    {
+        return $this->hasOne(TemplateTranslation::class)->where('lang', app()->getLocale());
+    }
+
+    public function translate($lang)
+    {
+        return $this->hasOne(TemplateTranslation::class)->where('lang', $lang)->first();
+    }
 }

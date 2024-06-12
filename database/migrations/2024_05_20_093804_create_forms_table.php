@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('template_route');
             $table->string('invitation_name');
             $table->string('language');
+            $table->integer('age')->nullable();
             $table->string('logo_path')->nullable();
             $table->string('sound_path')->nullable();
             $table->date('date');

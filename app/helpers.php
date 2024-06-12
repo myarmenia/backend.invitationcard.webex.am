@@ -1,5 +1,6 @@
 <?php
 use App\Models\Category;
+use App\Models\Template;
 
 if (!function_exists('languages')) {
     function languages()
@@ -15,3 +16,11 @@ if (!function_exists('categories')) {
         return Category::all();
     }
 }
+
+if (!function_exists('templates')) {
+    function templates()
+    {
+        return Template::all();
+    }
+}
+

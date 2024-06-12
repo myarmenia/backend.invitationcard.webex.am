@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\API\Web\ClientFeedbackController;
-use App\Http\Controllers\API\Web\EventResultController;
-use App\Http\Controllers\API\Web\FormController;
-use App\Http\Controllers\API\Web\Payment\ResultController;
+use App\Http\Controllers\API\ClientFeedbackController;
+use App\Http\Controllers\API\EventResultController;
+use App\Http\Controllers\API\FormController;
+use App\Http\Controllers\API\HomeController;
+use App\Http\Controllers\API\Payment\ResultController;
 use App\Http\Controllers\Telegram\TelegramController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 Route::group(['middleware' => ['setlang']], function ($router) {
+    Route::get('home', HomeController::class);
+
     Route::post('form', FormController::class);
     Route::get('payment-result', ResultController::class);
     Route::get('event-result', EventResultController::class);

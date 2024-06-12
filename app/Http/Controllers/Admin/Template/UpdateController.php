@@ -7,10 +7,11 @@ use App\Http\Requests\Admin\TemplateRequest;
 use App\Traits\Template\TemplateTrait;
 use Illuminate\Http\Request;
 
-class StoreController extends Controller
+class UpdateController extends Controller
 {
     use TemplateTrait;
-    public function __invoke(TemplateRequest $request){
+    public function __invoke(TemplateRequest $request)
+    {
 
         $res = $this->updateOrCreate($request->all());
 

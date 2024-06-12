@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\Category\CategoryCantroller;
 use App\Http\Controllers\Admin\Template\CreateController;
+use App\Http\Controllers\Admin\Template\EditController;
 use App\Http\Controllers\Admin\Template\StoreController;
 use App\Http\Controllers\Admin\Template\TemplateCantroller;
+use App\Http\Controllers\Admin\Template\UpdateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Telegram\TelegramController;
 use Illuminate\Support\Facades\Route;
@@ -47,9 +49,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('', TemplateCantroller::class)->name('index');
             Route::get('create', CreateController::class)->name('create');
             Route::post('store', StoreController::class)->name('store');
-            Route::post('update', StoreController::class)->name('update');
-
-
+            Route::get('edit/{id}', EditController::class)->name('edit');
+            Route::post('update/{id}', UpdateController::class)->name('update');
 
         });
     });

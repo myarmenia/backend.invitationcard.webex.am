@@ -9,7 +9,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('home')}}">Главная</a></li>
             <li class="breadcrumb-item"><a href="">Шаблоны</a></li>
-            <li class="breadcrumb-item active">Создать</li>
+            <li class="breadcrumb-item active">Редактировать</li>
         </ol>
     </nav>
 </div><!-- End Page Title -->
@@ -20,9 +20,9 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Создать</h5>
+                    <h5 class="card-title">Редактировать</h5>
 
-                    <form class="row g-3" action="{{route('template.store')}}" method="POST" enctype="multipart/form-data">
+                    <form class="row g-3" action="{{route('template.update', $template->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="col-12">
@@ -30,7 +30,7 @@
                             <select id="category" class="form-select" name="category_id">
                                 <option value="" selected disabled>Категория</option>
                                 @foreach (categories() as $category)
-                                    <option value="{{$category->id}}" {{ old('category_id') == $category->id ? 'selected' : ''}}>{{$category->translation->name}}</option>
+                                    <option value="{{$category->id}}" {{ $template->category_id == $category->id ? 'selected' : ''}}>{{$category->translation->name}}</option>
                                 @endforeach
                             </select>
                             @error('category_id')
@@ -38,14 +38,15 @@
                             @enderror
                         </div>
                         @foreach (languages() as $key => $lng)
+
                         <div class="col-12">
                             <label for="name_{{$lng}}" class="form-label">Имя {{ Str::upper($lng)}}</label>
                             <input type="text"
                                 class='form-control @error("translations.$lng.name") _incorrectly @enderror'
                                 id="name_{{$lng}}" name="translations[{{$lng}}][name]"
-                                value='{{ old("translations.$lng.name")}}'>
+                                value='{{ $template->translate($lng)->name }}'>
                             @error("translations.$lng.name")
-                                <div class="error_message"> {{ $message }} </div>
+                            <div class="error_message"> {{ $message }} </div>
                             @enderror
                         </div>
                         @endforeach
@@ -55,7 +56,7 @@
                             <input type="text"
                                 class='form-control @error("route") _incorrectly @enderror'
                                 id="route" name="route"
-                                value='{{ old("route")}}'>
+                                value='{{ $template->route }}'>
                             @error("route")
                                 <div class="error_message"> {{ $message }} </div>
                             @enderror

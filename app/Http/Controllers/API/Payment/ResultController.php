@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\Web\Payment;
+namespace App\Http\Controllers\API\Payment;
 
 use App\Http\Controllers\Controller;
 use App\Traits\GenerateLinkTrait;

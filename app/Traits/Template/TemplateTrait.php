@@ -9,7 +9,10 @@ trait TemplateTrait
 {
     public function updateOrCreate(array $data)
     {
+
         try {
+
+            $template_id = isset(request()->id) ? request()->id : null;
 
             $translations = $data['translations'];
             unset($data['translations']);
@@ -20,16 +23,20 @@ trait TemplateTrait
 
             }
 
-            $template = Template::updateOrCreate(['categori_id' => $data['category_id']], $data);
-dd($template);
+            $template = Template::updateOrCreate(['id' => $template_id], $data);
+
             foreach ($translations as $key => $item) {
+                TemplateTranslation::updateOrCreate(
+                    [
+                        'template_id' => $template->id,
+                        'lang' => $key
+                    ],
+                    [
+                        'template_id' => $template->id,
+                        'lang' => $key,
+                        'name' => $item['name']
 
-                TemplateTranslation::create([
-                    'template_id' => $template->id,
-                    'lang' => $key,
-                    'name' => $item['name'],
-
-                ]);
+                    ]);
             }
 
             return true;

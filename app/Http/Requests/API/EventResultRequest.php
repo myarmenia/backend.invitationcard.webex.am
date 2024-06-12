@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\API\Web;
+namespace App\Http\Requests\API;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-class ClientFeedbackRequest extends FormRequest
+class EventResultRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,19 +22,9 @@ class ClientFeedbackRequest extends FormRequest
      */
     public function rules(): array
     {
-
-        $data = [
+        return [
             'token' => 'required',
-            'visit' => 'required',
-            'guest_name' => 'required'
-
         ];
-
-        if( $this->visit){
-            $data['guest_quantity'] = 'required';
-        }
-
-        return $data;
     }
 
     protected function failedValidation(Validator $validator)

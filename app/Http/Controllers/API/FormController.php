@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\API\Web;
+namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\API\BaseController;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\API\Web\ApiFormRequest;
+use App\Http\Requests\API\ApiFormRequest;
 use App\Models\Form;
 use App\Traits\FormTrait;
 use App\Traits\Payments\OrderTrait;
@@ -17,7 +17,7 @@ class FormController extends BaseController
     use FormTrait, PaymentRegister, PaymentTrait, OrderTrait;
     public function __invoke(ApiFormRequest $request){
 
-        
+
         $lang = $request->header('Accept-Language') ?? 'am';
         $request['language'] = $lang;
 

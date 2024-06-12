@@ -28,8 +28,6 @@
                     <tr>
                         <th >#</th>
                         <th >Name</th>
-
-
                         <th  style="width: 80px !important">Actions</th>
                     </tr>
                 </thead>
@@ -43,10 +41,9 @@
 
                         <td class="px-1">
                             <div class="d-flex justify-content-between">
-                                <a href="">
+                                <a href="{{route('template.edit', $template->id)}}">
                                     <i class="bi bi-pencil-square action_i"></i>
                                 </a>
-
                             </div>
                         </td>
                     </tr>

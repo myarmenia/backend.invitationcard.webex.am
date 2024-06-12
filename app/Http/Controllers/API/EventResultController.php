@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\API\Web;
+namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\API\BaseController;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\API\Web\EventResultRequest;
-use App\Http\Resources\API\Web\EventResultResource;
+use App\Http\Requests\API\EventResultRequest;
+use App\Http\Resources\API\EventResultResource;
 use App\Models\Order;
 use Illuminate\Http\Request;
 

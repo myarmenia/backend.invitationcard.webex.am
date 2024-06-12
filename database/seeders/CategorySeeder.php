@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\CategoryTranslation;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -29,10 +30,18 @@ class CategorySeeder extends Seeder
         ];
 
         foreach ($categories as $key => $category) {
-            Category::updateOrCreate([
+            $category = Category::updateOrCreate([
                 'id' => $category['id'],
                 'key' => $category['key']
             ]);
+
+            foreach (languages() as $k => $lang) {
+                CategoryTranslation::updateOrCreate(
+                    ['category_id' => $category->id, 'lang' => $lang],
+                    [
+                        'name' => "aaa - $key - $lang"
+                    ]);
+            }
 
         }
     }

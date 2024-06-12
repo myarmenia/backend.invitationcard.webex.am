@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\API\Web;
+namespace App\Http\Resources\API;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;

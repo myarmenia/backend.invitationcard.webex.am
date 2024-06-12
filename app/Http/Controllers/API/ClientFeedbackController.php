@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\API\Web;
+namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\API\BaseController;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\API\Web\ClientFeedbackRequest;
+use App\Http\Requests\API\ClientFeedbackRequest;
 use App\Traits\ClientFeedbackTrait;
 use Illuminate\Http\Request;
 

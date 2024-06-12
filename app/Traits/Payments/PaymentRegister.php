@@ -28,7 +28,7 @@ trait PaymentRegister
                     'amount' => $amount * 100,
                     'currency' => '051',
                     'language' => 'en',
-                    'orderNumber' => 'k_'.$data->id,
+                    'orderNumber' => 'l_'.$data->id,
                     'returnUrl' => url('') . '/api/payment-result'
 
                 ]
