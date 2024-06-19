@@ -24,3 +24,10 @@ if (!function_exists('templates')) {
     }
 }
 
+
+if (!function_exists('templatesFilter')) {
+    function templatesFilter($array)
+    {
+        return Template::whereIn('category_id', $array)->get();
+    }
+}

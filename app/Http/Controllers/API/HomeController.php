@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends BaseController
 {
-    public function __invoke(){
+    public function __invoke(Request $request){
+
 
         return $this->sendResponse(new HomeResource([]), 'success');
 

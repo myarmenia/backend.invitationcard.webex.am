@@ -63,13 +63,17 @@
                         </div>
 
                         <div class="col-12">
-                            <label for="items" class="form-label">Изображение</label>
-                            <input type="file" class="form-control" id="items" name="image_path" accept="image/png, image/jpeg, image/jpg, image/PNG, image/JPG">
-                            @error('image_path')
+                            <label for="image" class="form-label">Изображение</label>
+                            <input type="file" class="form-control" id="image" name="image_path" accept="image/png, image/jpeg, image/jpg, image/PNG, image/JPG">
+                            @error('items')
                                 <div class="error_message"> {{ $message }} </div>
                             @enderror
                         </div>
-                        <div class="items_div d-flex flex-wrap justify-content-between"> </div>
+                        <div class="images_div d-flex flex-wrap justify-content-between w-25">
+                            @if ($template->image_path)
+                                <img src="{{url('') . Storage::disk('local')->url($template->image_path)}}">
+                            @endif
+                        </div>
 
                         <div class="text-start">
                             <button class="btn btn-primary">Сохранить</button>
@@ -81,6 +85,8 @@
         </div>
     </div>
 </section>
+@endsection
 
-
+@section('js-scripts')
+    <script src="{{ asset('assets/js/uploade-image.js') }}"></script>
 @endsection

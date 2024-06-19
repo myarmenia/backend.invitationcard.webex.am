@@ -14,9 +14,12 @@ class HomeResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+
+        $templates = $request->category_id != null ? templatesFilter($request->category_id) : templates();
+
         return [
             "categories" =>  CategoriesResource::collection(categories()),
-            "templates" => TemplatesResource::collection(templates())
+            "templates" => TemplatesResource::collection($templates)
         ];
     }
 }

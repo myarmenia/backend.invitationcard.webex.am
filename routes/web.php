@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\Category\CategoryCantroller;
+use App\Http\Controllers\Admin\ChangeStatusController;
+use App\Http\Controllers\Admin\DeleteItemController;
 use App\Http\Controllers\Admin\Template\CreateController;
 use App\Http\Controllers\Admin\Template\EditController;
 use App\Http\Controllers\Admin\Template\StoreController;
@@ -8,6 +10,7 @@ use App\Http\Controllers\Admin\Template\TemplateCantroller;
 use App\Http\Controllers\Admin\Template\UpdateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Telegram\TelegramController;
+use App\Services\ChangeStatusService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,5 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
         });
     });
 
+    Route::post('change-status', [ChangeStatusController::class, 'change_status'])->name('change_status');
+    Route::get('delete-item/{tb_name}/{id}', [DeleteItemController::class, 'index'])->name('delete_item');
 
 });

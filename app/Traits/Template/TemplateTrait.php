@@ -3,6 +3,7 @@ namespace App\Traits\Template;
 use App\Models\Template;
 use App\Models\TemplateTranslation;
 use App\Services\FileUploadService;
+use Illuminate\Support\Facades\Storage;
 
 
 trait TemplateTrait
@@ -17,7 +18,18 @@ trait TemplateTrait
             $translations = $data['translations'];
             unset($data['translations']);
 
+            $existingTemplate = null;
+
+            if ($template_id) {
+                $existingTemplate = Template::find($template_id);
+            }
+
             if (isset($data['image_path'])) {
+                if ($existingTemplate && $existingTemplate->image_path) {
+                    // Delete the existing image
+                    Storage::delete($existingTemplate->image_path);
+                }
+                
                 $image_path = FileUploadService::upload($data['image_path'], 'templates');
                 $data['image_path'] = $image_path;
 

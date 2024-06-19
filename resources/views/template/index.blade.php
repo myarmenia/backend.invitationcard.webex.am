@@ -44,6 +44,22 @@
                                 <a href="{{route('template.edit', $template->id)}}">
                                     <i class="bi bi-pencil-square action_i"></i>
                                 </a>
+                                {{-- <i class="bi bi-trash action_i" data-bs-toggle="modal" data-bs-target="#disablebackdrop"  onclick="create_request_route(`templates`, {{$template->id}})"></i>
+                                <a href="{{ $template->status != 1 ? route('change_status', [$template->id, 'templates', 1]) : ''}}">
+                                    <i class="bi bi-check-circle action_i" style="color:{{ $template->status == 1 ? '#0d6efd' : ''}}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="{{ $template->status == 1 ? 'Confirmed' : 'Change status to confirmed'}}"> </i>
+                                </a> --}}
+                                <a class="dropdown-item d-flex" href="javascript:void(0);">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input change_status" type="checkbox"
+                                            role="switch" data-field-name="status"
+                                            {{ $template->status ? 'checked' : null }}>
+                                    </div>
+                                </a>
+
+                                <button type="button" class="dropdown-item click_delete_item"
+                                    data-bs-toggle="modal" data-bs-target="#smallModal"><i
+                                    class="bx bx-trash me-1"></i>
+                                </button>
                             </div>
                         </td>
                     </tr>
@@ -64,6 +80,9 @@
 
     @extends('layouts.modal')
 @endsection
+
+<x-modal-delete></x-modal-delete>
+
 @section('js-scripts')
     <script src="{{ asset('assets/back/js/modal.js') }}"></script>
 @endsection

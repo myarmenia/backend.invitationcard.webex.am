@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade');
             $table->string('route');
             $table->string('image_path');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
