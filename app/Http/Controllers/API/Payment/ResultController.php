@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\API\Payment;
 
-use App\Http\Controllers\Controller;
 use App\Models\Order;
-use App\Traits\GenerateLinkTrait;
-use App\Traits\Payments\CheckPaymentStatusTrait;
 use Illuminate\Http\Request;
+use App\Traits\GenerateLinkTrait;
+use App\Http\Controllers\Controller;
+use App\Traits\Payments\CheckPaymentStatusTrait;
 
 class ResultController extends Controller
 {
@@ -17,7 +17,7 @@ class ResultController extends Controller
         $order_number = $request->orderId;
         $order = Order::where('order_id', $order_number)->first();
         $template_route	 = $order->form->template->route;
-        
+
         $payment_result = $this->checkStatus($order_number);
 
         if ($payment_result) {
@@ -33,21 +33,21 @@ class ResultController extends Controller
                 }
 
                 echo "<script type='text/javascript'>
-                    window.location = 'https://invitationcard.webex.am/am$template_route?error'
+                    window.location = 'https://invitationcard.webex.am/am$template_route?error1'
                 </script>";
 
             }
             else{
 
                 echo "<script type='text/javascript'>
-                    window.location = 'https://invitationcard.webex.am/am$template_route?error'
+                    window.location = 'https://invitationcard.webex.am/am$template_route?error2'
                 </script>";
             }
 
 
         }else{
             echo "<script type='text/javascript'>
-                    window.location = 'https://invitationcard.webex.am/am$template_route?errort'
+                    window.location = 'https://invitationcard.webex.am/am$template_route?errort3'
                 </script>";
 
         }

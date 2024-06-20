@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Http;
 
 trait CheckPaymentStatusTrait
 {
-  public function checkStatus(string $order_id)
-  {
+    public function checkStatus(string $order_id)
+    {
 
         $result_data = false;
         $order = Order::where('order_id', $order_id)->first();
@@ -37,7 +37,7 @@ trait CheckPaymentStatusTrait
 
             $response = '';
             if ($response_data->errorCode == 0) {
-                if($response_data->paymentAmountInfo->paymentState == "DEPOSITED"){
+                if ($response_data->paymentAmountInfo->paymentState == "DEPOSITED") {
                     $order->update(['status' => 1]);
                     $order->payment->update(['status' => 'confirmed']);
                 }
@@ -62,8 +62,8 @@ trait CheckPaymentStatusTrait
 
         }
 
-      return false;
-  }
+        return false;
+    }
 
 
 

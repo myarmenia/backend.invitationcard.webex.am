@@ -46,6 +46,7 @@ class TariffsSeeder extends Seeder
                 'id' => $item['id'],
                 'price' => $item['price'],
                 'month' => $item['month'],
+                'type' => $item['type'],
                 'status' => $item['status']
 
             ]);
