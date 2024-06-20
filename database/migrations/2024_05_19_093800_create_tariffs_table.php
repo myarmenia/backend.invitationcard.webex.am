@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('price');
             $table->integer('month');
+            $table->integer('type');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
