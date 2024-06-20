@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\Payment;
 
 use App\Models\Order;
+use App\Traits\TariffsTrait;
 use Illuminate\Http\Request;
 use App\Traits\GenerateLinkTrait;
 use App\Http\Controllers\Controller;
@@ -10,7 +11,7 @@ use App\Traits\Payments\CheckPaymentStatusTrait;
 
 class ResultController extends Controller
 {
-    use CheckPaymentStatusTrait, GenerateLinkTrait;
+    use CheckPaymentStatusTrait, GenerateLinkTrait, TariffsTrait;
     public function __invoke(Request $request)
     {
 

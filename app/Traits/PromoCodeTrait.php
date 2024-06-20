@@ -21,7 +21,7 @@ trait PromoCodeTrait
         } while (PromoCode::where('code', $code)->exists());
 
         $generated_code = PromoCode::create([
-            'cade' => $code,
+            'code' => $code,
             'tariff_id' => $tariff_id,
             'valid_date' => $valid_date
         ]);

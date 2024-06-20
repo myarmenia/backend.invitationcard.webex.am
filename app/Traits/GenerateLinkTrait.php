@@ -12,6 +12,7 @@ use App\Services\FileUploadService;
 
 trait GenerateLinkTrait
 {
+    use TariffsTrait, PromoCodeTrait;
 
     public function generateLink($order_id)
     {
@@ -57,7 +58,9 @@ trait GenerateLinkTrait
 
     public function autoGenerateLink($form)
     {
+        
         try {
+
             $app_fron_url = env('APP_FRONT_URL');
             $lang = $form->language ?? 'am';
             $template_route = $form->template_route;
