@@ -1,0 +1,39 @@
+<?php
+namespace App\Traits;
+
+use App\Models\PromoCode;
+use App\Models\Tariff;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
+
+trait PromoCodeTrait
+{
+
+    public function generatePromoCode($tariff_id)
+    {
+        $now = Carbon::now();
+
+        $tarif = Tariff::find($tariff_id);
+        $valid_date = $now->addMonths($tarif->month);
+
+        do {
+            $code = Str::random(8);
+        } while (PromoCode::where('code', $code)->exists());
+
+        $generated_code = PromoCode::create([
+            'cade' => $code,
+            'tariff_id' => $tariff_id,
+            'valid_date' => $valid_date
+        ]);
+
+        if ($generated_code) {
+            return $generated_code;
+
+        }
+
+        return false;
+
+    }
+
+
+}

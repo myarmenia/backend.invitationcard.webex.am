@@ -56,8 +56,8 @@ return [
   'doesnt-start-with' => ':attribute չի կարող սկսվել հետևյալներից որևէ մեկով. :values',
   'email' => ':attribute պետք է վավեր էլփոստի հասցե լինի:',
   'ends-with' => ':attribute պետք է ավարտվի հետևյալներից մեկով. :values',
-  'enum' => 'Ընտրված :հատկանիշն անվավեր է:',
-  'exists' => 'Ընտրված :հատկանիշն անվավեր է:',
+  'enum' => 'Ընտրված :attribute անվավեր է:',
+  'exists' => 'Ընտրված :attribute անվավեր է:',
   'file' => ':attribute պետք է լինի ֆայլ:',
   'filled' => ':attribute դաշտը պետք է արժեք ունենա:',
   'gt' => [
@@ -225,7 +225,8 @@ return [
     'start_date'=> 'Միջոցառման սկիզբ',
     'end_date'=> 'Միջոցառման ավարտ',
     'min_museum_quantity' => 'Թանգարանների նվազագույն քանակ',
-    'percent' => 'Տոկոս'
+    'percent' => 'Տոկոս',
+    'promo_code' => 'պրոմո կոդը'
 
   ]
 

@@ -160,7 +160,9 @@ return [
 
     'attributes' => [
       'email' => 'email',
-      'translations.*.name' => 'name'
+      'translations.*.name' => 'name',
+      'promo_code' => 'promo code'
+      
     ],
 
 ];

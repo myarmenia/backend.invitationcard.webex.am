@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\Payment;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Traits\GenerateLinkTrait;
 use App\Traits\Payments\CheckPaymentStatusTrait;
 use Illuminate\Http\Request;
@@ -14,6 +15,9 @@ class ResultController extends Controller
     {
 
         $order_number = $request->orderId;
+        $order = Order::where('order_id', $order_number)->first();
+        $template_route	 = $order->form->template->route;
+        
         $payment_result = $this->checkStatus($order_number);
 
         if ($payment_result) {
@@ -22,23 +26,28 @@ class ResultController extends Controller
 
                 $link = $this->generateLink($order_number);
 
-
+                if($link){
+                    echo "<script type='text/javascript'>
+                        window.location = 'https://invitationcard.webex.am/am$template_route?event_url=$link'
+                    </script>";
+                }
 
                 echo "<script type='text/javascript'>
-                    window.location = 'https://invitationcard.webex.am/am/wedding1?event_url=$link'
+                    window.location = 'https://invitationcard.webex.am/am$template_route?error'
                 </script>";
+
             }
             else{
 
                 echo "<script type='text/javascript'>
-                    window.location = 'https://invitationcard.webex.am/am/wedding1?error'
+                    window.location = 'https://invitationcard.webex.am/am$template_route?error'
                 </script>";
             }
 
 
         }else{
             echo "<script type='text/javascript'>
-                    window.location = 'https://invitationcard.webex.am/am/wedding1?errort'
+                    window.location = 'https://invitationcard.webex.am/am$template_route?errort'
                 </script>";
 
         }

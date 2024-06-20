@@ -15,7 +15,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CategorySeeder::class,
             TemplatesSeeder::class,
-            CreateAdminUserSeeder::class
+            CreateAdminUserSeeder::class,
+            TariffsSeeder::class,
+            TariffsTranslationsSeeder::class
+
         ]);
     }
 }

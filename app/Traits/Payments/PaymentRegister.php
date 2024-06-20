@@ -13,7 +13,7 @@ trait PaymentRegister
     public function register($data)
     {
 
-        $amount = 10;
+        $amount = $this->getTariff($data['tariff_id'])->price;
 
         $response = Http::withOptions(['verify' => false])->asForm()->post(
             // 'https://ipaytest.arca.am:8445/payment/rest/register.do',

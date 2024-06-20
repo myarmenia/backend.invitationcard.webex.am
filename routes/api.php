@@ -5,6 +5,7 @@ use App\Http\Controllers\API\EventResultController;
 use App\Http\Controllers\API\FormController;
 use App\Http\Controllers\API\HomeController;
 use App\Http\Controllers\API\Payment\ResultController;
+use App\Http\Controllers\API\TariffsController;
 use App\Http\Controllers\Telegram\TelegramController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,5 +33,7 @@ Route::group(['middleware' => ['setlang']], function ($router) {
     Route::get('telegram', TelegramController::class);
 
     Route::post('client-feedback', ClientFeedbackController::class);
+    Route::get('tariffs', TariffsController::class);
+
 });
 
