@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\CheckPromoCodeController;
 use App\Http\Controllers\API\ClientFeedbackController;
 use App\Http\Controllers\API\EventResultController;
 use App\Http\Controllers\API\FormController;
@@ -34,6 +35,8 @@ Route::group(['middleware' => ['setlang']], function ($router) {
 
     Route::post('client-feedback', ClientFeedbackController::class);
     Route::get('tariffs', TariffsController::class);
+    Route::get('check-promo-code', CheckPromoCodeController::class);
+
 
 });
 

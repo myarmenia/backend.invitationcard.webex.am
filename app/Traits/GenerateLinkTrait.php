@@ -31,7 +31,7 @@ trait GenerateLinkTrait
                 $promo_code = $this->generatePromoCode($tariff_id);
 
                 if($promo_code){
-                    $body_promo_code = "🎉 Ձեր պրոմո կոդն է՝ $promo_code->code։ \n Այն հասանելի է մինչև date('d-m-Y', $promo_code->valid_date)։ \n  🎉";
+                    $body_promo_code = "🎉 Ձեր պրոմո կոդն է. $promo_code->code։ \n Այն հասանելի է մինչև date('d-m-Y', $promo_code->valid_date)։ \n  🎉";
                     WhatsAppAPI::sendMessage($body_promo_code, $feedback);
                 }
             }

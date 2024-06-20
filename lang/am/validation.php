@@ -226,7 +226,7 @@ return [
     'end_date'=> 'Միջոցառման ավարտ',
     'min_museum_quantity' => 'Թանգարանների նվազագույն քանակ',
     'percent' => 'Տոկոս',
-    'promo_code' => 'պրոմո կոդը'
+    'promo_code' => 'պրոմո կոդ'
 
   ]
 

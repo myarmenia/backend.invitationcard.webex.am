@@ -39,8 +39,8 @@ class FormController extends BaseController
                     </script>";
                 }
                 else{
-                    
-                    return $this->sendError(__('messages.error_server'));
+
+                    return $this->sendError(__('messages.system_error'));
                 }
 
 
@@ -61,7 +61,7 @@ class FormController extends BaseController
 
         }
         else{
-            return $this->sendError(__('messages.error_server'));
+            return $this->sendError(__('messages.system_error'));
 
         }
 

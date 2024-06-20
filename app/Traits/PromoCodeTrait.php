@@ -35,5 +35,16 @@ trait PromoCodeTrait
 
     }
 
+    public function checkCode($code){
+        $promo = PromoCode::where('code', $code)->first();
+
+        if ($promo ) {
+            return __('messages.valid_code') . Carbon::parse($promo->valid_date)->format('d.m.Y');
+        }
+        else{
+            return __('messages.code_not_found');
+        }
+    }
+
 
 }

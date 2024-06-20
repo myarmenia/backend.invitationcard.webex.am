@@ -56,7 +56,7 @@ class FileUploadService
 
         $fileName = md5(microtime()) . '.' . $type;
         $filePath = $folder_path . '/' . $fileName;
-        $file = Storage::disk('public')->put($filePath, $imageData);
+        $file = Storage::disk('local')->put($filePath, $imageData);
 
         if($file){
             return  'public/' . $filePath;
