@@ -20,6 +20,7 @@ class TemplatesResource extends JsonResource
             'category_id' => $this->category_id,
             'name' => $this->translation->name,
             'route' => $this->route,
+            'price' => getTariff('basic')->price,
             'image_path' => url('') . Storage::disk('local')->url($this->image_path)
         ];
     }

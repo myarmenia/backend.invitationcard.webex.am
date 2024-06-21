@@ -1,5 +1,6 @@
 <?php
 use App\Models\Category;
+use App\Models\Tariff;
 use App\Models\Template;
 
 if (!function_exists('languages')) {
@@ -29,5 +30,12 @@ if (!function_exists('templatesFilter')) {
     function templatesFilter($array)
     {
         return Template::whereIn('category_id', $array)->get();
+    }
+}
+
+if (!function_exists('getTariff')) {
+    function getTariff($type)
+    {
+        return Tariff::where('type', $type)->first();
     }
 }

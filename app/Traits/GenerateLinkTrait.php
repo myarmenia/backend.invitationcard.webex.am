@@ -58,7 +58,7 @@ trait GenerateLinkTrait
 
     public function autoGenerateLink($form)
     {
-        
+
         try {
 
             $app_fron_url = env('APP_FRONT_URL');
