@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\Section;
 use App\Helpers\WhatsAppAPI;
 use App\Services\FileUploadService;
+use Illuminate\Support\Carbon;
 
 trait GenerateLinkTrait
 {
@@ -30,9 +31,10 @@ trait GenerateLinkTrait
 
             if (in_array($tariff_type, ['standart', 'premium'])) {
                 $promo_code = $this->generatePromoCode($tariff_id);
+                $valid_date = Carbon::parse($promo_code->valid_date)->format('d.m.Y');
 
                 if($promo_code){
-                    $body_promo_code = "🎉 Ձեր պրոմո կոդն է. $promo_code->code։ \n Այն հասանելի է մինչև date('d-m-Y', $promo_code->valid_date)։ \n  🎉";
+                    $body_promo_code = "🎉 Ձեր պրոմո կոդն է. $promo_code->code ։ \n Այն հասանելի է մինչև $valid_date ։ \n  🎉";
                     WhatsAppAPI::sendMessage($body_promo_code, $feedback);
                 }
             }

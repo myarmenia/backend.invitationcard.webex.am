@@ -40,26 +40,25 @@
                         </td>
 
                         <td class="px-1">
-                            <div class="d-flex justify-content-between">
-                                <a href="{{route('template.edit', $template->id)}}">
+                            <div class="d-flex justify-content-between align-item-center px-2 action" data-id="{{ $template->id }}" data-tb-name="templates">
+                                <a href="{{route('template.edit', $template->id)}}" class="ml-2">
                                     <i class="bi bi-pencil-square action_i"></i>
                                 </a>
                                 {{-- <i class="bi bi-trash action_i" data-bs-toggle="modal" data-bs-target="#disablebackdrop"  onclick="create_request_route(`templates`, {{$template->id}})"></i>
                                 <a href="{{ $template->status != 1 ? route('change_status', [$template->id, 'templates', 1]) : ''}}">
                                     <i class="bi bi-check-circle action_i" style="color:{{ $template->status == 1 ? '#0d6efd' : ''}}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="{{ $template->status == 1 ? 'Confirmed' : 'Change status to confirmed'}}"> </i>
                                 </a> --}}
-                                <a class="dropdown-item d-flex" href="javascript:void(0);">
-                                    <div class="form-check form-switch">
+                                {{-- <a class="dropdown-item d-flex" href="javascript:void(0);"> --}}
+                                    <div class="form-check  form-switch ">
                                         <input class="form-check-input change_status" type="checkbox"
                                             role="switch" data-field-name="status"
                                             {{ $template->status ? 'checked' : null }}>
                                     </div>
-                                </a>
-
-                                <button type="button" class="dropdown-item click_delete_item"
-                                    data-bs-toggle="modal" data-bs-target="#smallModal"><i
-                                    class="bx bx-trash me-1"></i>
-                                </button>
+                                {{-- </a> --}}
+                                    <button type="button" class="dropdown-item click_delete_item"
+                                        data-bs-toggle="modal" data-bs-target="#smallModal"><i
+                                        class="bi bi-trash  action_i mr-2"></i>
+                                    </button>
                             </div>
                         </td>
                     </tr>
@@ -84,5 +83,6 @@
 <x-modal-delete></x-modal-delete>
 
 @section('js-scripts')
-    <script src="{{ asset('assets/back/js/modal.js') }}"></script>
+     <script src="{{ asset('assets/js/change-status.js') }}"></script>
+    <script src="{{ asset('assets/js/delete-item.js') }}"></script>
 @endsection

@@ -39,10 +39,16 @@ trait PromoCodeTrait
         $promo = PromoCode::where('code', $code)->first();
 
         if ($promo ) {
-            return __('messages.valid_code') . Carbon::parse($promo->valid_date)->format('d.m.Y');
+            return [
+                'message' => __('messages.valid_code') . Carbon::parse($promo->valid_date)->format('d.m.Y'),
+                'type' => 'found'
+            ];
         }
         else{
-            return __('messages.code_not_found');
+            return [
+                'message' => __('messages.code_not_found'),
+                'type' => 'not_found'
+            ];
         }
     }
 

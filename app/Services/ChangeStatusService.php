@@ -20,28 +20,11 @@ class ChangeStatusService
 
       $update = DB::table($request->tb_name)
         ->where('id', $request->id)
-        ->update([$request->field_name => $status]);
-
-        if($request->tb_name == 'events' ){
-          $event = Event::find($request->id);
-          if($event->status==1){
-            $instance = app(ChangeStatusService::class);
-            $instance->get($request->id);
-
-          }
-          else{
-              $event->notifications()->delete();
-
-          }
-        }
+        ->update(['status' => $status]);
 
 
       return $update ? $update : false;
 
   }
-  public function get ($id){
 
-    $notification=$this->sendEvent($id);
-
-  }
 }

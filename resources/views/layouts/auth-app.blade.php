@@ -40,7 +40,7 @@
 </head>
 
 <body>
-    
+
         @include('layouts.menu')
         @include('layouts.sidebar')
 
@@ -89,6 +89,7 @@
     @yield('js-scripts')
 
     <script src="{{ asset('assets/back/js/all-unread-messages.js') }}"></script>
+    <script src="{{ asset('assets/back/js/modal.js') }}"></script>
 
 </body>
 

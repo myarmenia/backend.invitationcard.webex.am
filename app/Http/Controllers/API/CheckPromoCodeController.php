@@ -13,8 +13,8 @@ class CheckPromoCodeController extends BaseController
     public function __invoke(CheckPromoCodRequest $request){
          $result = $this->checkCode($request->promo_code);
 
-         if($result){
-            return $this->sendResponse([], $result);
+         if($result['type']){
+            return $result['type'] == 'found' ? $this->sendResponse([], $result['message']) : $this->sendError($result['message']);
          }
 
         return $this->sendError(__('messages.system_error'));
