@@ -39,11 +39,13 @@
                            {{ $template->name}}
                         </td>
 
-                        <td class="px-1">
+                        <td class="px-1" style="width: 160px">
                             <div class="d-flex justify-content-between align-item-center px-2 action" data-id="{{ $template->id }}" data-tb-name="templates">
-                                <a href="{{route('template.edit', $template->id)}}" class="ml-2">
-                                    <i class="bi bi-pencil-square action_i"></i>
-                                </a>
+                                <div>
+                                    <a href="{{route('template.edit', $template->id)}}" class="ml-2">
+                                        <i class="bi bi-pencil-square action_i" style="font-size: 24px"></i>
+                                    </a>
+                                </div>
                                 {{-- <i class="bi bi-trash action_i" data-bs-toggle="modal" data-bs-target="#disablebackdrop"  onclick="create_request_route(`templates`, {{$template->id}})"></i>
                                 <a href="{{ $template->status != 1 ? route('change_status', [$template->id, 'templates', 1]) : ''}}">
                                     <i class="bi bi-check-circle action_i" style="color:{{ $template->status == 1 ? '#0d6efd' : ''}}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="{{ $template->status == 1 ? 'Confirmed' : 'Change status to confirmed'}}"> </i>
@@ -55,10 +57,12 @@
                                             {{ $template->status ? 'checked' : null }}>
                                     </div>
                                 {{-- </a> --}}
-                                    <button type="button" class="dropdown-item click_delete_item"
+                                <div>
+                                    <button type="button" class="dropdown-item click_delete_item text-primary"
                                         data-bs-toggle="modal" data-bs-target="#smallModal"><i
-                                        class="bi bi-trash  action_i mr-2"></i>
+                                        class="bi bi-trash  action_i mr-2" style="font-size: 22px"></i>
                                     </button>
+                                </div>
                             </div>
                         </td>
                     </tr>
