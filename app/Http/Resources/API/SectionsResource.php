@@ -3,6 +3,7 @@
 namespace App\Http\Resources\API;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -23,7 +24,7 @@ class SectionsResource extends JsonResource
             "name_2" => $this->name_2 ?? null,
             "full_name" => $this->full_name ?? null,
             "text" => $this->text,
-            "time" => $this->time,
+            "time" => Carbon::parse($this->time)->format('H:i'),
             "address" => $this->address,
             "address_link" => $this->address_link,
             "images" => ImagesResourse::collection($this->images)

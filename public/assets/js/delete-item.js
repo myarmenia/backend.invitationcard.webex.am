@@ -27,14 +27,23 @@ $(function () {
         success: function (data) {
           let message = ''
           let type = ''
+            console.log(data, 445566)
           if (data.result) {
-            message = 'Գործողությունը հաստատված է։'
-            type = 'success'
-            row.remove()
-            image_div.remove()
+              if (data.result == 'hasRelation'){
+                  message = 'У объекта есть связь'
+                  type = 'danger'
+              }
+              else{
+                  message = 'Действие подтверждено.'
+                  type = 'success'
+                  row.remove()
+                  image_div.remove()
+
+              }
+
           }
           else {
-            message = 'Սխալ է տեղի ունեցել։'
+              message = 'Произошла ошибка.'
             type = 'danger'
           }
 

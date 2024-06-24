@@ -22,7 +22,7 @@ class EventResultResource extends JsonResource
             "lang" => "am",
             "date" => $this->date,
             "sound_path" => $this->sound_path,
-            "logo_path" => Storage::url($this->logo_path),
+            "logo_path" => url('') . Storage::disk('public')->url($this->logo_path),
             "sections" => SectionsResource::collection($this->sections)
 
         ];

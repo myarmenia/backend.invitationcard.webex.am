@@ -9,7 +9,7 @@ class Template extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $relationItems = ['forms'];   // only for delete method / check has reletion or no / if there is no connection, then just delete it
+    public $relationItems = ['forms'];   // only for delete method / check has reletion or no / if there is no connection, then just delete it
 
     public function forms()
     {

@@ -16,47 +16,71 @@ class DeleteItemService
         $model = '';
 
         if(class_exists($className)) {
+
             $model = new $className;
         }
-
 
         if(!is_string($model)){
 
             $item = $model->where('id', $id);
 
-
-
             $file_path = '';
             $item_db = $item->first();
+            $relationCounts = [];
 
-            dd($item_db->forms->count());
+            if ($item_db) {
+                $relations = $model->relationItems;
 
-            if(isset($item_db->images)){
-                Storage::disk('public')->deleteDirectory("$tb_name/$id");
+                if(isset($relations)){
+                    foreach ($relations as $k => $relation) {
+                        if ($item_db->{$relation}()->exists()) {
 
+                            array_push($relationCounts, $item_db->{$relation}->count());
+                        }
+
+                    }
+                }
+
+
+                if(count($relationCounts) == 0){
+                    if (isset($item_db->images)) {
+                        Storage::disk('public')->deleteDirectory("$tb_name/$id");
+
+                    } else {
+
+                        if (isset($item_db->logo)) {
+                            $file_path = $item_db->logo;
+                        }
+
+                        if (isset($item_db->video)) {
+                            $file_path = $item_db->video;
+                        }
+
+                        if (isset($item_db->path)) {
+                            $file_path = $item_db->path;
+                        }
+
+                        if (isset($item_db->images_path)) {
+                            $file_path = $item_db->images_path;
+                        }
+
+                        Storage::delete($file_path);
+                    }
+
+                    $delete = $item ? $item->delete() : false;
+
+                    return $delete;
+
+                }
+                else{
+                    return 'hasRelation';
+                }
             }
             else{
-
-                    if(isset($item_db->logo)){
-                        $file_path = $item_db->logo;
-                    }
-
-                    if(isset($item_db->video)){
-                    $file_path = $item_db->video;
-                    }
-                    if(isset($item_db->path)){
-                    $file_path = $item_db->path;
-                    }
-                    if (isset($item_db->images_path)) {
-                        $file_path = $item_db->images_path;
-                    }
-
-                    Storage::delete($file_path);
+                return false;
             }
 
-            $delete = $item ? $item->delete() : false;
 
-            return $delete;
         }
 
     }
