@@ -34,9 +34,13 @@ class FormController extends BaseController
                 $link = $this->autoGenerateLink($create_form);
 
                 if($link){
-                    echo "<script type='text/javascript'>
-                        window.location.href = 'https://invitationcard.webex.am/am$template_route?event_url=$link'
-                    </script>";
+                    // echo "<script type='text/javascript'>
+                    //     window.location = 'https://invitationcard.webex.am/am$template_route?event_url=$link'
+                    // </script>";
+                    $redirect_url = "https://invitationcard.webex.am/am$template_route?event_url=$link";
+                    $responce['redirect_url'] = $redirect_url;
+                    
+                    return $this->sendResponse($responce, 'success');
 
                 }
                 else{
