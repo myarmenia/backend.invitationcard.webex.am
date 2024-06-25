@@ -4,12 +4,12 @@
 @endsection
 @section('content')
     <div class="pagetitle">
-        <h1>Template</h1>
+        <h1>Шаблон</h1>
         <nav>
             <ol class="breadcrumb">
 
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                <li class="breadcrumb-item active">Template</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Главная</a></li>
+                <li class="breadcrumb-item active">Шаблон</li>
 
             </ol>
         </nav>
@@ -20,15 +20,16 @@
         <div class="card-body">
             <div class="d-flex justify-content-end mb-3">
 
-                <a href="{{ route('template.create') }}"><button type="button" class="btn btn-primary">Create template</button></a>
+                <a href="{{ route('template.create') }}"><button type="button" class="btn btn-primary">Создать шаблон</button></a>
             </div>
 
             <table class="table table-bordered border-primary">
                 <thead>
                     <tr>
                         <th >#</th>
-                        <th >Name</th>
-                        <th  style="width: 80px !important">Actions</th>
+                        <th >Название</th>
+                        <th >Изображение</th>
+                        <th style="width: 80px !important">Действия</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,7 +37,10 @@
                     <tr>
                         <th scope="row">{{++$i}}</th>
                         <td>
-                           {{ $template->name}}
+                           {{ $template->translation->name}}
+                        </td>
+                        <td class="w-25">
+                           <img src="{{ Storage::disk('local')->url($template->image_path)}}" class="w-25">
                         </td>
 
                         <td class="px-1" style="width: 160px">
@@ -46,17 +50,11 @@
                                         <i class="bi bi-pencil-square action_i" style="font-size: 24px"></i>
                                     </a>
                                 </div>
-                                {{-- <i class="bi bi-trash action_i" data-bs-toggle="modal" data-bs-target="#disablebackdrop"  onclick="create_request_route(`templates`, {{$template->id}})"></i>
-                                <a href="{{ $template->status != 1 ? route('change_status', [$template->id, 'templates', 1]) : ''}}">
-                                    <i class="bi bi-check-circle action_i" style="color:{{ $template->status == 1 ? '#0d6efd' : ''}}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="{{ $template->status == 1 ? 'Confirmed' : 'Change status to confirmed'}}"> </i>
-                                </a> --}}
-                                {{-- <a class="dropdown-item d-flex" href="javascript:void(0);"> --}}
-                                    <div class="form-check  form-switch ">
-                                        <input class="form-check-input change_status" type="checkbox"
-                                            role="switch" data-field-name="status"
-                                            {{ $template->status ? 'checked' : null }}>
-                                    </div>
-                                {{-- </a> --}}
+                                <div class="form-check  form-switch ">
+                                    <input class="form-check-input change_status" type="checkbox"
+                                        role="switch" data-field-name="status"
+                                        {{ $template->status ? 'checked' : null }}>
+                                </div>
                                 <div>
                                     <button type="button" class="dropdown-item click_delete_item text-primary"
                                         data-bs-toggle="modal" data-bs-target="#smallModal"><i

@@ -31,19 +31,16 @@ Auth::routes(['register' => false, 'verify' => false,]);
 Route::get('telegram', TelegramController::class);
 
 Route::group(['middleware' => ['auth']], function () {
-    // Route::name('admin.')->group(function () {
-    //     Route::prefix('admin')->group(function () {
-    //         Route::resource('/roles', RoleController::class);
-    //         Route::resource('/users', UserController::class);
-    //         Route::resource('/permissions', PermissionController::class);
-    //     });
-    // });
-
+   
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::name('category.')->group(function () {
         Route::prefix('category')->group(function () {
             Route::get('', CategoryCantroller::class)->name('index');
+            Route::get('create',\App\Http\Controllers\Admin\Category\CreateController::class)->name('create');
+            Route::post('store', \App\Http\Controllers\Admin\Category\StoreController::class)->name('store');
+            Route::get('edit/{id}', \App\Http\Controllers\Admin\Category\EditController::class)->name('edit');
+            // Route::post('update/{id}', \App\Http\Controllers\Admin\Category\UpdateController::class)->name('update');
         });
     });
 
@@ -56,10 +53,11 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('update/{id}', UpdateController::class)->name('update');
 
         });
+
+
     });
 
     Route::post('change-status', [ChangeStatusController::class, 'change_status'])->name('change_status');
-
     Route::get('delete-item/{tb_name}/{id}', [DeleteItemController::class, 'index'])->name('delete_item');
 
 });

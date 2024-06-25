@@ -154,7 +154,8 @@ return [
         "email" => "Эл. почта",
         'translations.*.name' => 'имя',
         'image_path' => 'изображение',
-        'promo_code' => 'промо-код'
+        'promo_code' => 'промо-код',
+        'key' => 'ключ'
 
     ]
 ];

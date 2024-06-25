@@ -4,33 +4,36 @@
 @endsection
 @section('content')
     <div class="pagetitle">
-        <h1>Categories</h1>
+        <h1>Категории</h1>
         <nav>
             <ol class="breadcrumb">
 
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                <li class="breadcrumb-item active">Categories</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Главная</a></li>
+                <li class="breadcrumb-item active">Категории</li>
 
             </ol>
         </nav>
     </div>
     <!-- End Page Title -->
+    @if (Session::get('success'))
+        <div class="alert alert-success my-2">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
 
     <div class="card pt-4">
         <div class="card-body">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-end mb-3">
 
-                <a href=""><button type="button" class="btn btn-primary">Create Press Release</button></a>
+                <a href="{{ route('category.create') }}"><button type="button" class="btn btn-primary">Создать категорию</button></a>
             </div>
 
             <table class="table table-bordered border-primary">
                 <thead>
                     <tr>
                         <th >#</th>
-                        <th >Name</th>
-
-
-                        <th  style="width: 80px !important">Actions</th>
+                        <th >Название</th>
+                        <th  style="width: 80px !important">Создать шаблон</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,15 +41,23 @@
                     <tr>
                         <th scope="row">{{++$i}}</th>
                         <td>
-                           {{ $category->name}}
+                           {{ $category->translation->name}}
                         </td>
 
-                        <td class="px-1">
-                            <div class="d-flex justify-content-between">
-                                <a href="">
-                                    <i class="bi bi-pencil-square action_i"></i>
-                                </a>
+                        <td class="px-1" style="width: 160px">
+                            <div class="d-flex justify-content-between align-item-center px-2 action" data-id="{{ $category->id }}" data-tb-name="categories">
+                                <div>
+                                    <a href="{{route('category.edit', $category->id)}}" class="ml-2">
+                                        <i class="bi bi-pencil-square action_i" style="font-size: 24px"></i>
+                                    </a>
+                                </div>
 
+                                <div>
+                                    <button type="button" class="dropdown-item click_delete_item text-primary"
+                                        data-bs-toggle="modal" data-bs-target="#smallModal"><i
+                                        class="bi bi-trash  action_i mr-2" style="font-size: 22px"></i>
+                                    </button>
+                                </div>
                             </div>
                         </td>
                     </tr>

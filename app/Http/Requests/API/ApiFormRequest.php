@@ -29,7 +29,6 @@ class ApiFormRequest extends FormRequest
             'template_id' => 'required',
             'date' => 'required|date',
             'feedback' => 'required',
-            'tariff_id' => 'required'
         ];
 
         if ($this->has('promo_code')) {
@@ -40,6 +39,9 @@ class ApiFormRequest extends FormRequest
                 },
 
             ];
+        }
+        else {
+            $data['tariff_id'] = 'required';
         }
 
         return $data;

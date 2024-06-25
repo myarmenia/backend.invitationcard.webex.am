@@ -37,12 +37,11 @@ class FormController extends BaseController
                     echo "<script type='text/javascript'>
                         window.location = 'https://invitationcard.webex.am/am$template_route?event_url=$link'
                     </script>";
+
                 }
                 else{
-
                     return $this->sendError(__('messages.system_error'));
                 }
-
 
             }
             else{
@@ -51,7 +50,6 @@ class FormController extends BaseController
                 if ($redirect_url == 'error_payment') {
                     return $this->sendError(__('messages.error_payment'));
                 }
-
 
                 $responce['redirect_url'] = $redirect_url;
 
@@ -64,7 +62,6 @@ class FormController extends BaseController
             return $this->sendError(__('messages.system_error'));
 
         }
-
 
     }
 }

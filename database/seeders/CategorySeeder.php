@@ -18,28 +18,44 @@ class CategorySeeder extends Seeder
             [
                 'id' => 1,
                 'key' => 'wedding',
+                'translations' => [
+                    'am' => 'Հարսանիք',
+                    'ru' => 'Свадьба',
+                    'en' => 'Wedding'
+                ]
             ],
             [
                 'id' => 2,
                 'key' => 'birthday',
+                'translations' => [
+                    'am' => 'Ծննդյան տարեդարձ',
+                    'ru' => 'День рождения',
+                    'en' => 'Birthday'
+                ]
             ],
             [
                 'id' => 3,
                 'key' => 'event',
+                'translations' => [
+                    'am' => 'Ավարտական երեկույթ',
+                    'ru' => 'Мероприятие',
+                    'en' => 'Event'
+                ]
             ]
         ];
 
         foreach ($categories as $key => $category) {
-            $category = Category::updateOrCreate([
+            $categor_y = Category::updateOrCreate([
                 'id' => $category['id'],
                 'key' => $category['key']
             ]);
 
             foreach (languages() as $k => $lang) {
+
                 CategoryTranslation::updateOrCreate(
-                    ['category_id' => $category->id, 'lang' => $lang],
+                    ['category_id' => $categor_y->id, 'lang' => $lang],
                     [
-                        'name' => "aaa - $key - $lang"
+                        'name' => $category['translations'][$lang]
                     ]);
             }
 

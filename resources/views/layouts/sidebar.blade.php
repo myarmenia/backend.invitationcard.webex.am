@@ -13,15 +13,15 @@
             <a class="nav-link {{ request()->routeIs('category.*') ? '' : ' collapsed' }}"
                 href="{{ route('category.index')}}">
                 <i class="ri-file-list-2-line"></i>
-                <span>Categories</span>
+                <span>Категории</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('press-release-videos.*') ? '' : ' collapsed' }}"
                 href="{{ route('template.index')}}">
-                <i class="ri-play-circle-line"></i>
-                <span>Templates</span>
+                <i class="ri-file-list-2-line"></i>
+                <span>Шаблоны</span>
             </a>
         </li>
 
