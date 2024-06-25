@@ -15,7 +15,7 @@ trait FormTrait {
             'invitation_name' => $data['invitation_name'],
             'template_id' => $data['template_id'],
             'promo_code' => $data['promo_code'] ?? null,
-            'tariff_id' => $data['tariff_id'],
+            'tariff_id' => $data['tariff_id'] ?? null,
             'template_route' => $data['template_route'],
             'language' => $data['language'],
             'date' => $data['date'],
