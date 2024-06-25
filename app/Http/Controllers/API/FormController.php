@@ -35,7 +35,7 @@ class FormController extends BaseController
 
                 if($link){
                     echo "<script type='text/javascript'>
-                        window.location = 'https://invitationcard.webex.am/am$template_route?event_url=$link'
+                        window.location.href = 'https://invitationcard.webex.am/am$template_route?event_url=$link'
                     </script>";
 
                 }
