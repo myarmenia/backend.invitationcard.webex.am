@@ -53,7 +53,7 @@ trait GenerateLinkTrait
 
             return [
                     'link' => $link,
-                    'promo_code' => $promo_code
+                    'promo_code' => $promo_code->code
                 ];
 
         } catch (\Throwable $th) {
@@ -86,7 +86,7 @@ trait GenerateLinkTrait
             WhatsAppAPI::sendMessage($body_link, $feedback);
 
             return $link;
-            
+
         } catch (\Throwable $th) {
            return false;
         }
