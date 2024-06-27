@@ -29,11 +29,12 @@ class PromoCodePaymentResultController extends Controller
                 $valid_date = Carbon::parse($promo_code->valid_date)->format('d.m.Y');
 
                 if ($promo_code) {
-                    $body_promo_code = "🎉 Ձեր պրոմո կոդն է. $promo_code->code ։ \n Այն հասանելի է մինչև $valid_date ։ \n  🎉";
+                    $body_promo_code = __('messages.promo_code_info') . $promo_code->code . __('messages.promo_code_date') . $valid_date;
+
                     WhatsAppAPI::sendMessage($body_promo_code, $client_feedback->feedback);
 
                     echo "<script type='text/javascript'>
-                        window.location = 'https://invitationcard.webex.am/am?p_token=$promo_code'
+                        window.location = 'https://invitationcard.webex.am/am?promo_code=$promo_code'
                     </script>";
                 }
 

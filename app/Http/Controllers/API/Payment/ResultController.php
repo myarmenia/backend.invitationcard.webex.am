@@ -23,9 +23,12 @@ class ResultController extends Controller
 
         if ($payment_result) {
 
-            $link = $this->generateLink($order_number);
+            $result = $this->generateLink($order_number);
 
-            if($link){
+            if($result){
+                $link = $result['link'];
+                $link = $result['promo_code'] ? $link . "&promo_code=$result[promo_code]" : $link;
+
                 echo "<script type='text/javascript'>
                     window.location = 'https://invitationcard.webex.am/am/?event_url=$link'
                 </script>";

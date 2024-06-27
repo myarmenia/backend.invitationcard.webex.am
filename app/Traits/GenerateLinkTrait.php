@@ -25,31 +25,37 @@ trait GenerateLinkTrait
             $template_route = $order->form->template_route;
             $link_name = $order->form->invitation_name;
             $feedback = $order->form->feedback->feedback;
+            $promo_code = false;
 
             $tariff_id = $order->form->tariff_id;
             $tariff_type = $this->getTariff($tariff_id)->type;
+
+            $link = "$app_fron_url$lang$template_route?$link_name&token=$order_id";
 
             if (in_array($tariff_type, ['standart', 'premium'])) {
                 $promo_code = $this->generatePromoCode($tariff_id);
                 $valid_date = Carbon::parse($promo_code->valid_date)->format('d.m.Y');
 
                 if($promo_code){
-                    $body_promo_code = "🎉 Ձեր պրոմո կոդն է. $promo_code->code ։ \n Այն հասանելի է մինչև $valid_date ։ \n  🎉";
+                    $body_promo_code =  __('messages.promo_code_info') . $promo_code->code . __('messages.promo_code_date') . $valid_date;
                     WhatsAppAPI::sendMessage($body_promo_code, $feedback);
                 }
             }
-
 
             $link = "$app_fron_url$lang$template_route?$link_name&token=$order_id";
 
             $order->form->update(['link' => $link]);
 
-            $body_link = "🎉 Ձեր հրավիրատոմսը հաջողությաամբ ստեղծված է։ \n Հրավիրատոմսը կարող եք տեսնել հետևյալ հղմամբ։ \n $link 🎉";
+            $body_link =  __('messages.invitation_card_text') . $link;
 
 
             WhatsAppAPI::sendMessage($body_link, $feedback);
 
-        return $link;
+            return [
+                    'link' => $link,
+                    'promo_code' => $promo_code
+                ];
+
         } catch (\Throwable $th) {
             return false;
 
@@ -75,11 +81,12 @@ trait GenerateLinkTrait
 
             $form->update(['link' => $link]);
 
-            $body_link = "🎉 Ձեր հրավիրատոմսը հաջողությաամբ ստեղծված է։ \n Հրավիրատոմսը կարող եք տեսնել հետևյալ հղմամբ։ \n $link 🎉";
+            $body_link = __('messages.invitation_card_text') . $link;
 
             WhatsAppAPI::sendMessage($body_link, $feedback);
 
             return $link;
+            
         } catch (\Throwable $th) {
            return false;
         }
