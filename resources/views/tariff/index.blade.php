@@ -30,7 +30,7 @@
         <div class="card-body">
             <div class="d-flex justify-content-end mb-3">
 
-                <a href="{{ route('category.create') }}"><button type="button" class="btn btn-primary">Создать категорию</button></a>
+                <a href="{{ route('tariff.create') }}"><button type="button" class="btn btn-primary">Создать категорию</button></a>
             </div>
 
             <table class="table table-bordered border-primary">

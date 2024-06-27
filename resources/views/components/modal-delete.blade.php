@@ -7,8 +7,8 @@
       </div>
       <div class="modal-body">
         <div class="row">
-            <div class="col-12 mb-3 text-center">Подтвердить действие</div>
-          <div class="col mb-3 message_cont text-center">Подтвердить действие </div>
+            <div class="col-12 mb-3 text-center action_text">Подтвердить действие</div>
+            <div class="col mb-3 message_cont text-center"></div>
         </div>
       </div>
       <div class="modal-footer">

@@ -8,7 +8,7 @@
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('home')}}">Главная</a></li>
-            <li class="breadcrumb-item"><a href="">Шаблоны</a></li>
+            <li class="breadcrumb-item"><a href="{{route('template.index')}}">Шаблоны</a></li>
             <li class="breadcrumb-item active">Создать</li>
         </ol>
     </nav>

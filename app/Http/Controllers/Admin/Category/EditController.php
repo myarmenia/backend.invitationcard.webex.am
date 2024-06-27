@@ -10,7 +10,7 @@ class EditController extends Controller
 {
     public function __invoke($id)
     {
-        $categories = Category::find($id);
-        return view('category.edit', compact('categories'));
+        $category = Category::find($id);
+        return view('category.edit', compact('category'));
     }
 }

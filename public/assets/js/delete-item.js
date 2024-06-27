@@ -6,6 +6,7 @@ $(function () {
 
     $('.delete_item').attr('data-url', url)
     $('.message_cont').html('')
+    $('.action_text').html('Подтвердить действие')
 
   })
 })
@@ -18,7 +19,7 @@ $(function () {
     let row = $(`.action[data-id="${id}"]`).parents('tr')
     let image_div = $(this).parent('.uploaded-image-div')
     let image_divs = $('.uploaded-image-div')
-    console.log(image_div)
+ 
     if ((image_divs.length > 1 && row.length == 0) || (image_divs.length == 0 && row.length > 0)) {
       $.ajax({
         type: "GET",
@@ -27,7 +28,8 @@ $(function () {
         success: function (data) {
           let message = ''
           let type = ''
-            console.log(data, 445566)
+           $('.action_text').html('')
+
           if (data.result) {
               if (data.result == 'hasRelation'){
                   message = 'У объекта есть связь'

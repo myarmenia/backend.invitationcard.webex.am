@@ -31,8 +31,17 @@ Auth::routes(['register' => false, 'verify' => false,]);
 Route::get('telegram', TelegramController::class);
 
 Route::group(['middleware' => ['auth']], function () {
-   
+
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::name('tariff.')->group(function () {
+        Route::prefix('tariff')->group(function () {
+            Route::get('', CategoryCantroller::class)->name('index');
+            // Route::get('create', \App\Http\Controllers\Admin\Category\CreateController::class)->name('create');
+            // Route::post('store', \App\Http\Controllers\Admin\Category\StoreController::class)->name('store');
+            // Route::get('edit/{id}', \App\Http\Controllers\Admin\Category\EditController::class)->name('edit');
+            // Route::post('update/{id}', \App\Http\Controllers\Admin\Category\UpdateController::class)->name('update');
+        });
+    });
 
     Route::name('category.')->group(function () {
         Route::prefix('category')->group(function () {
@@ -40,7 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('create',\App\Http\Controllers\Admin\Category\CreateController::class)->name('create');
             Route::post('store', \App\Http\Controllers\Admin\Category\StoreController::class)->name('store');
             Route::get('edit/{id}', \App\Http\Controllers\Admin\Category\EditController::class)->name('edit');
-            // Route::post('update/{id}', \App\Http\Controllers\Admin\Category\UpdateController::class)->name('update');
+            Route::post('update/{id}', \App\Http\Controllers\Admin\Category\UpdateController::class)->name('update');
         });
     });
 

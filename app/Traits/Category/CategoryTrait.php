@@ -25,8 +25,7 @@ trait CategoryTrait
             if ($category_id) {
                 $existingTemplate = Category::find($category_id);
             }
-
-
+            
 
             $category = Category::updateOrCreate(['id' => $category_id], $data);
 

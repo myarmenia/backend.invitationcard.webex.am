@@ -79,7 +79,6 @@
         </nav>
     </div>
 
-    @extends('layouts.modal')
 @endsection
 
 <x-modal-delete></x-modal-delete>
