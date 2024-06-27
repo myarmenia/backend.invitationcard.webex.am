@@ -17,7 +17,7 @@ class ResultController extends Controller
 
         $order_number = $request->orderId;
         $order = Order::where('order_id', $order_number)->first();
-        $template_route	 = $order->form->template->route;
+        // $template_route	 = $order->form->template->route;
 
         $payment_result = $this->checkStatus($order_number);
 
@@ -28,10 +28,13 @@ class ResultController extends Controller
             if($result){
                 $link = $result['link'];
                 $link = $result['promo_code'] ? $link . "&promo_code=$result[promo_code]" : $link;
-
                 echo "<script type='text/javascript'>
-                    window.location = 'https://invitationcard.webex.am/am/?event_url=$link'
+                    window.location = 'https://webex.am'
                 </script>";
+
+                // echo "<script type='text/javascript'>
+                //     window.location = 'https://invitationcard.webex.am/am/?event_url=$link'
+                // </script>";
             }
 
             echo "<script type='text/javascript'>

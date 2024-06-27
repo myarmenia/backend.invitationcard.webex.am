@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Category\CategoryCantroller;
 use App\Http\Controllers\Admin\ChangeStatusController;
 use App\Http\Controllers\Admin\DeleteItemController;
+use App\Http\Controllers\Admin\Tariff\TariffController;
 use App\Http\Controllers\Admin\Template\CreateController;
 use App\Http\Controllers\Admin\Template\EditController;
 use App\Http\Controllers\Admin\Template\StoreController;
@@ -35,7 +36,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::name('tariff.')->group(function () {
         Route::prefix('tariff')->group(function () {
-            Route::get('', CategoryCantroller::class)->name('index');
+            Route::get('', TariffController::class)->name('index');
             // Route::get('create', \App\Http\Controllers\Admin\Category\CreateController::class)->name('create');
             // Route::post('store', \App\Http\Controllers\Admin\Category\StoreController::class)->name('store');
             // Route::get('edit/{id}', \App\Http\Controllers\Admin\Category\EditController::class)->name('edit');
