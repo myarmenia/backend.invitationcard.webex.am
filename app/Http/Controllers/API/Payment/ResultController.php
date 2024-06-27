@@ -28,13 +28,10 @@ class ResultController extends Controller
             if($result){
                 $link = $result['link'];
                 $link = $result['promo_code'] ? $link . "&promo_code=$result[promo_code]" : $link;
-                echo "<script type='text/javascript'>
-                    window.location = 'https://webex.am'
-                </script>";
 
-                // echo "<script type='text/javascript'>
-                //     window.location = 'https://invitationcard.webex.am/am/?event_url=$link'
-                // </script>";
+                echo "<script type='text/javascript'>
+                    window.location = 'https://invitationcard.webex.am/am/?event_url=$link'
+                </script>";
             }
 
             echo "<script type='text/javascript'>
