@@ -27,7 +27,7 @@ class ResultController extends Controller
 
             if($link){
                 echo "<script type='text/javascript'>
-                    window.location = 'https://invitationcard.webex.am/am$template_route?event_url=$link'
+                    window.location = 'https://invitationcard.webex.am/am/?event_url=$link'
                 </script>";
             }
 
