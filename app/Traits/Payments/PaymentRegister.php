@@ -13,24 +13,21 @@ trait PaymentRegister
     public function register($data)
     {
 
-        $amount = $this->getTariff($data['tariff_id'])->price;
+        $amount = $this->getTariff($data->tariff_id)->price;
 
         $response = Http::withOptions(['verify' => false])->asForm()->post(
             // 'https://ipaytest.arca.am:8445/payment/rest/register.do',
                 'https://ipay.arca.am/payment/rest/register.do',
                 [
-                    // 'userName'=>'gorcka_api',
-                    // 'password' => 'Nokia6300',
-                    // 'userName' => '34558260_api',
-                    // 'password' => 'Ah0545139',
+
                     'userName' => env('ACBA_USER_NAME'),
                     'password' => env('ACBA_PASSWORD'),
                     // 'amount' => $amount * 100,
                     'amount' => 10 * 100,
                     'currency' => '051',
                     'language' => 'en',
-                    'orderNumber' => 'b_'.$data->id,
-                    'returnUrl' => url('') . '/api/payment-result'
+                    'orderNumber' => $data->buy_tariff ? 'client_feedback_' . $data->id : 'c_' . $data->id,
+                    'returnUrl' => $data->buy_tariff ? url('') . "/api/promo-code-payment-result?tariff_id=$data->tariff_id&client_id=$data->id" : url('') . '/api/payment-result'
 
                 ]
             );
@@ -45,8 +42,8 @@ trait PaymentRegister
 
                     $order_id = $response_data->orderId;
                     $order = [
-                        'form_id' => $data->id,
-                        'form_type' => $data->template->category->key,
+                        'form_id' => $data->buy_tariff ? null : $data->id,
+                        'form_type' => $data->buy_tariff ? null : $data->template->category->key,
                         'order_id' => $order_id,
                         'amount' => $amount,
                         'language' => $data->language

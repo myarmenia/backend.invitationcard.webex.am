@@ -23,6 +23,7 @@ class FormController extends BaseController
         $lang = $request->header('Accept-Language') ?? 'am';
         $request['language'] = $lang;
 
+
         $create_form = $this->createForm($request->all());
 
         if($create_form){
@@ -34,12 +35,11 @@ class FormController extends BaseController
                 $link = $this->autoGenerateLink($create_form);
 
                 if($link){
-                    // echo "<script type='text/javascript'>
-                    //     window.location = 'https://invitationcard.webex.am/am$template_route?event_url=$link'
-                    // </script>";
-                    $redirect_url = "https://invitationcard.webex.am/am$template_route?event_url=$link";
+
+                    $redirect_url = "https://invitationcard.webex.am/am/?event_url=$link";
+
                     $responce['redirect_url'] = $redirect_url;
-                    
+
                     return $this->sendResponse($responce, 'success');
 
                 }

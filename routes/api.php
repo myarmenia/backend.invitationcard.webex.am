@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\API\BuyTariffController;
 use App\Http\Controllers\API\CheckPromoCodeController;
 use App\Http\Controllers\API\ClientFeedbackController;
 use App\Http\Controllers\API\EventResultController;
 use App\Http\Controllers\API\FormController;
 use App\Http\Controllers\API\HomeController;
+use App\Http\Controllers\API\Payment\PromoCodePaymentResultController;
 use App\Http\Controllers\API\Payment\ResultController;
 use App\Http\Controllers\API\TariffsController;
 use App\Http\Controllers\Telegram\TelegramController;
@@ -30,13 +32,15 @@ Route::group(['middleware' => ['setlang']], function ($router) {
 
     Route::post('form', FormController::class);
     Route::get('payment-result', ResultController::class);
+    Route::get('promo-code-payment-result', PromoCodePaymentResultController::class);
+
     Route::get('event-result', EventResultController::class);
     Route::get('telegram', TelegramController::class);
 
     Route::post('client-feedback', ClientFeedbackController::class);
     Route::get('tariffs', TariffsController::class);
     Route::get('check-promo-code', CheckPromoCodeController::class);
-
+    Route::post('buy-tariff', BuyTariffController::class);
 
 });
 

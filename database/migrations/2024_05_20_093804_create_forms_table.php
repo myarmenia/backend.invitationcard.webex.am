@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('template_id');
             $table->foreign('template_id')->references('id')->on('templates')->onUpdate('cascade');
-            $table->bigInteger('tariff_id')->unsigned();
+            $table->bigInteger('tariff_id')->unsigned()->nullable();
             $table->foreign('tariff_id')->references('id')->on('tariffs')->onDelete('cascade')->onUpdate('cascade');
             $table->string('promo_code')->nullable();
             $table->string('link')->nullable();

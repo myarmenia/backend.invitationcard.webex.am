@@ -18,15 +18,10 @@ trait CheckPaymentStatusTrait
             'https://ipay.arca.am/payment/rest/getOrderStatusExtended.do',
 
             [
-                // 'userName' => 'gorcka_api',
-                // 'password' => 'Nokia6300',
-                // 'userName' => '34558260_api',
-                // 'password' => 'Ah0545139',
                 'userName' => env('ACBA_USER_NAME'),
                 'password' => env('ACBA_PASSWORD'),
                 'orderId' => $order_id,
-                'language' => 'ru',
-
+                'language' => 'ru'
             ]
         );
 
@@ -35,30 +30,22 @@ trait CheckPaymentStatusTrait
             $response_d = $response->getBody()->getContents();
             $response_data = json_decode($response_d);
 
-            $response = '';
+            $result = false;
             if ($response_data->errorCode == 0) {
                 if ($response_data->paymentAmountInfo->paymentState == "DEPOSITED") {
                     $order->update(['status' => 1]);
                     $order->payment->update(['status' => 'confirmed']);
+
+                    $result = true;
                 }
-
-            } else {
-
-                // $message = isset($response_data->message) ? $response_data->message : (isset($response_data->errors) ? $response_data->errors->payment : null);
-
-                // $result_data = ['payment_message' => $message];
-
-                $order->payment->update([
-                    'error_code' => $response_data->errorCode,
-                    'error_message' => $response_data->errorMessage
-                ]);
-
             }
 
-            return [
+            $order->payment->update([
                 'error_code' => $response_data->errorCode,
-                'error_message' => $response_data->errorMessage ?? null
-            ];
+                'error_message' => $response_data->errorMessage
+            ]);
+
+            return $result;
 
         }
 

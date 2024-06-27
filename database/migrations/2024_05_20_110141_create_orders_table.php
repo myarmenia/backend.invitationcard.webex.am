@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('form_id');
+            $table->unsignedBigInteger('form_id')->nullable();
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('form_type');
+            $table->string('form_type')->nullable();
             $table->string('order_id')->nullable();
             $table->integer('amount')->nullable();
             $table->string('link')->nullable();
