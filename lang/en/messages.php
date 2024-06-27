@@ -11,7 +11,7 @@ return [
     'valid_code' => 'Promo code expiration date: ',
     'code_not_found' => 'Promo code not found.',
     'promo_code_info' => '✅Your promo code: ',
-    'promo_code_date' => 'It is available until:  ',
+    'promo_code_date' => ' It is available until:  ',
     'invitation_card_text' => '✅Your invitation card has been successfully created. You can invite a friend using the following link '
 
 
