@@ -22,7 +22,7 @@ trait FormTrait {
             'date' => $data['date'],
             'sound_path' => $data['sound_path'] ?? null,
             'token' => $token,
-            'age' => $data['age']
+            'age' => $data['age'] ?? null
         ];
 
         $form = Form::create($form_data);
