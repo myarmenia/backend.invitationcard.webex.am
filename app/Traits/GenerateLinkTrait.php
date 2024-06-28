@@ -37,7 +37,7 @@ trait GenerateLinkTrait
                 $valid_date = Carbon::parse($promo_code->valid_date)->format('d.m.Y');
 
                 if($promo_code){
-                    $body_promo_code =  __('messages.promo_code_info') . $promo_code->code . ' ' . __('messages.promo_code_date') . $valid_date;
+                    $body_promo_code =  __('messages.promo_code_info') . $promo_code->code . ' .' . __('messages.promo_code_date') . $valid_date;
                     WhatsAppAPI::sendMessage($body_promo_code, $feedback);
                 }
             }

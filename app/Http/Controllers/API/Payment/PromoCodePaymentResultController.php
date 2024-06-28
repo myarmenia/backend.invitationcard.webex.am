@@ -18,7 +18,7 @@ class PromoCodePaymentResultController extends Controller
 
         $lang = $request->header('Accept-Language') ?? 'am';
         app()->setLocale($lang);
-        
+
         $order_number = $request->orderId;
         $tariff_id = $request->tariff_id;
         $client_feedback = ClientFeedback::find($request->client_id);
@@ -33,7 +33,7 @@ class PromoCodePaymentResultController extends Controller
                 $valid_date = Carbon::parse($promo_code->valid_date)->format('d.m.Y');
 
                 if ($promo_code) {
-                    $body_promo_code = __('messages.promo_code_info') . $promo_code->code . ' ' . __('messages.promo_code_date') . $valid_date;
+                    $body_promo_code = __('messages.promo_code_info') . $promo_code->code . ' .' . __('messages.promo_code_date') . $valid_date;
 
                     WhatsAppAPI::sendMessage($body_promo_code, $client_feedback->feedback);
 
