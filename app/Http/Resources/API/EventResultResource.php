@@ -19,7 +19,7 @@ class EventResultResource extends JsonResource
             "id" => $this->id,
             "template_id" => $this->template_id,
             "invitation_name" => $this->invitation_name,
-            "lang" => "am",
+            "lang" => $this->language,
             "date" => $this->date,
             "sound_path" => $this->sound_path,
             "logo_path" => url('') . Storage::disk('public')->url($this->logo_path),

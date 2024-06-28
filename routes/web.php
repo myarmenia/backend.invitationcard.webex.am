@@ -37,10 +37,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::name('tariff.')->group(function () {
         Route::prefix('tariff')->group(function () {
             Route::get('', TariffController::class)->name('index');
-            // Route::get('create', \App\Http\Controllers\Admin\Category\CreateController::class)->name('create');
-            // Route::post('store', \App\Http\Controllers\Admin\Category\StoreController::class)->name('store');
-            // Route::get('edit/{id}', \App\Http\Controllers\Admin\Category\EditController::class)->name('edit');
-            // Route::post('update/{id}', \App\Http\Controllers\Admin\Category\UpdateController::class)->name('update');
+            Route::get('edit/{id}', \App\Http\Controllers\Admin\Tariff\EditController::class)->name('edit');
+            Route::post('update/{id}', \App\Http\Controllers\Admin\Tariff\EditController::class)->name('update');
         });
     });
 

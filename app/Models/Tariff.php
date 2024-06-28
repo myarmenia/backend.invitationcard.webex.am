@@ -14,4 +14,10 @@ class Tariff extends Model
         return $this->hasOne(TariffsTranslation::class)->where('lang', app()->getLocale());
     }
 
+    public function translate($lang)
+    {
+        return $this->hasOne(TariffsTranslation::class)->where('lang', $lang)->first();
+    }
+
+
 }

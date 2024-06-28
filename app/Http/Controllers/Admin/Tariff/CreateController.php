@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class CreateController extends Controller
 {
-    //
+    public function __invoke()
+    {
+        return view('tariff.create');
+    }
 }
