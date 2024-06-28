@@ -53,7 +53,7 @@ trait GenerateLinkTrait
 
             return [
                     'link' => $link,
-                    'promo_code' => $promo_code->code
+                    'promo_code' => $promo_code ? $promo_code->code : false
                 ];
 
         } catch (\Throwable $th) {
