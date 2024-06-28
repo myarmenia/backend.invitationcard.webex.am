@@ -21,16 +21,18 @@ trait GenerateLinkTrait
 
             $app_fron_url = env('APP_FRONT_URL');
             $order = Order::where('order_id', $order_id)->first();
-            $lang = $order->form->language ?? 'am';
-            $template_route = $order->form->template_route;
-            $link_name = $order->form->invitation_name;
-            $feedback = $order->form->feedback->feedback;
+            $form = $order->form;
+            $lang = $form->language ?? 'am';
+            $template_route = $form->template_route;
+            $link_name = $form->invitation_name;
+            $feedback = $form->feedback->feedback;
             $promo_code = false;
+            $token = $form->token;
 
             $tariff_id = $order->form->tariff_id;
             $tariff_type = $this->getTariff($tariff_id)->type;
 
-            $link = "$app_fron_url$lang$template_route?$link_name&token=$order_id";
+            $link = "$app_fron_url$lang$template_route?$link_name&token=$token";
 
             if (in_array($tariff_type, ['standart', 'premium'])) {
                 $promo_code = $this->generatePromoCode($tariff_id);
@@ -42,9 +44,9 @@ trait GenerateLinkTrait
                 }
             }
 
-            $link = "$app_fron_url$lang$template_route?$link_name&token=$order_id";
+            // $link = "$app_fron_url$lang$template_route?$link_name&token=$token";
 
-            $order->form->update(['link' => $link]);
+            $form->update(['link' => $link]);
 
             $body_link =  __('messages.invitation_card_text') . $link;
 
@@ -75,7 +77,8 @@ trait GenerateLinkTrait
             $link_name = $form->invitation_name;
             $feedback = $form->feedback->feedback;
 
-            $token = $form->id * 2024;
+            // $token = $form->id * 2024;
+            $token = $form->token;
 
             $link = "$app_fron_url$lang$template_route?$link_name&p_token=$form->promo_code&token=$token";
 

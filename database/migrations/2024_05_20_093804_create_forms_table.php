@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('tariff_id')->unsigned()->nullable();
             $table->foreign('tariff_id')->references('id')->on('tariffs')->onDelete('cascade')->onUpdate('cascade');
             $table->string('promo_code')->nullable();
+            $table->string('token')->nullable();
             $table->string('link')->nullable();
             $table->string('template_route');
             $table->string('invitation_name');

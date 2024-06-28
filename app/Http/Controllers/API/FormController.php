@@ -12,11 +12,12 @@ use App\Traits\Payments\OrderTrait;
 use App\Traits\Payments\PaymentRegister;
 use App\Traits\Payments\PaymentTrait;
 use App\Traits\TariffsTrait;
+use App\Traits\TokenTrait;
 use Illuminate\Http\Request;
 
 class FormController extends BaseController
 {
-    use FormTrait, PaymentRegister, PaymentTrait, OrderTrait, TariffsTrait, GenerateLinkTrait;
+    use FormTrait, PaymentRegister, PaymentTrait, OrderTrait, TariffsTrait, GenerateLinkTrait, TokenTrait;
     public function __invoke(ApiFormRequest $request){
 
 
@@ -32,7 +33,7 @@ class FormController extends BaseController
 
                 $template_route = $create_form->template->route;
                 app()->setLocale($lang);
-                
+
                 $link = $this->autoGenerateLink($create_form);
 
                 if($link){

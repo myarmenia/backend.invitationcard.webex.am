@@ -11,6 +11,7 @@ trait FormTrait {
     public function createForm($data){
 
         // ============= create form ========================
+        $token = $this->generateToken();
         $form_data = [
             'invitation_name' => $data['invitation_name'],
             'template_id' => $data['template_id'],
@@ -19,7 +20,9 @@ trait FormTrait {
             'template_route' => $data['template_route'],
             'language' => $data['language'],
             'date' => $data['date'],
-            'sound_path' => $data['sound_path'] ?? null
+            'sound_path' => $data['sound_path'] ?? null,
+            'token' => $token,
+            'age' => $data['age']
         ];
 
         $form = Form::create($form_data);

@@ -23,6 +23,7 @@ class EventResultResource extends JsonResource
             "lang" => $this->language,
             "date" => Carbon::parse($this->date)->format('d.m.Y'),
             "sound_path" => $this->sound_path,
+            "age" => $this->age ?? null,
             "logo_path" => url('') . Storage::disk('public')->url($this->logo_path),
             "sections" => SectionsResource::collection($this->sections)
 

@@ -12,7 +12,12 @@ return [
     'code_not_found' => 'Promo code not found.',
     'promo_code_info' => '✅Your promo code: ',
     'promo_code_date' => ' It is available until:  ',
-    'invitation_card_text' => '✅Your invitation card has been successfully created. You can invite a friend using the following link '
+    'invitation_card_text' => '✅Your invitation card has been successfully created. You can invite a friend using the following link ',
+    'answer' => 'Answer: ',
+    'will_come' => '✅we will come',
+    'can_not_come' => "❗️we can't come ",
+    'guest' => 'Guest: ',
+    'number_of_guests' => 'Number of guests: '
 
 
 ];
