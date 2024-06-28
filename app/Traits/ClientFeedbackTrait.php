@@ -24,8 +24,7 @@ trait ClientFeedbackTrait
         $guest_quantity = $data['visit'] ? __('messages.number_of_guests') . " $data[guest_quantity]" : '';
 
         $body = __('messages.answer') . " $res \n".
-                 __('messages.guest') . " $data[guest_name] \n
-                 🎉 $guest_quantity 🎉";
+                 __('messages.guest') . " $data[guest_name] \n $guest_quantity";
 
         return WhatsAppAPI::sendMessage($body, $feedback);
     }
