@@ -18,6 +18,8 @@ class ResultController extends Controller
         $order_number = $request->orderId;
         $order = Order::where('order_id', $order_number)->first();
         // $template_route	 = $order->form->template->route;
+        $lang =  $order->form->language;
+        app()->setLocale($lang);
 
         $payment_result = $this->checkStatus($order_number);
 

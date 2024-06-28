@@ -31,7 +31,8 @@ class FormController extends BaseController
             if(!empty($request->promo_code)){
 
                 $template_route = $create_form->template->route;
-
+                app()->setLocale($lang);
+                
                 $link = $this->autoGenerateLink($create_form);
 
                 if($link){
