@@ -4,6 +4,7 @@ namespace App\Http\Resources\API;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class EventResultResource extends JsonResource
@@ -20,7 +21,7 @@ class EventResultResource extends JsonResource
             "template_id" => $this->template_id,
             "invitation_name" => $this->invitation_name,
             "lang" => $this->language,
-            "date" => $this->date,
+            "date" => Carbon::parse($this->date)->format('d.m.Y'),
             "sound_path" => $this->sound_path,
             "logo_path" => url('') . Storage::disk('public')->url($this->logo_path),
             "sections" => SectionsResource::collection($this->sections)
