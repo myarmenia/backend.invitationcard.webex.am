@@ -4,14 +4,14 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TemplateRequest extends FormRequest
+class TariffRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -21,17 +21,8 @@ class TemplateRequest extends FormRequest
      */
     public function rules(): array
     {
-
-        $data = [
-            "category_id" => "required",
-            "translations.*.name" => "required",
-            "route" => "required"
+        return [
+            //
         ];
-
-        if($this->id == null){
-            $data["image_path"] = "required | mimes:jpeg,jpg,png,PNG,JPG,JPEG | max:2048";
-        }
-
-        return $data;
     }
 }

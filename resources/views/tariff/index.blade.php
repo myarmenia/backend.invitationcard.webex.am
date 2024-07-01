@@ -35,7 +35,7 @@
                         <th >#</th>
                         <th >Название</th>
                         <th >Цена</th>
-                        <th  style="width: 80px !important">Создать тариф</th>
+                        <th  style="width: 80px !important">Действия</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,7 +49,7 @@
                            {{ $tariff->price}}
                         </td>
 
-                        <td class="px-1" style="width: 160px">
+                        <td class="px-1" style="width: 100px">
                             <div class="d-flex justify-content-between align-item-center px-2 action" data-id="{{ $tariff->id }}" data-tb-name="tariffs">
                                 <div>
                                     <a href="{{ route('tariff.edit', $tariff->id) }}" class="ml-2">
@@ -57,12 +57,6 @@
                                     </a>
                                 </div>
 
-                                <div>
-                                    <button type="button" class="dropdown-item click_delete_item text-primary"
-                                        data-bs-toggle="modal" data-bs-target="#smallModal"><i
-                                        class="bi bi-trash  action_i mr-2" style="font-size: 22px"></i>
-                                    </button>
-                                </div>
                             </div>
                         </td>
                     </tr>

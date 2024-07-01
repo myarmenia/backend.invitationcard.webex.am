@@ -65,7 +65,7 @@
                         <div class="col-12">
                             <label for="image" class="form-label">Изображение</label>
                             <input type="file" class="form-control" id="image" name="image_path" accept="image/png, image/jpeg, image/jpg, image/PNG, image/JPG">
-                            @error('items')
+                            @error('image_path')
                                 <div class="error_message"> {{ $message }} </div>
                             @enderror
                         </div>

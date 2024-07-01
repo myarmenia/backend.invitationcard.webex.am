@@ -38,7 +38,7 @@
                     <tr>
                         <th >#</th>
                         <th >Название</th>
-                        <th  style="width: 80px !important">Создать категорию</th>
+                        <th >Действия</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,7 +49,7 @@
                            {{ $category->translation->name}}
                         </td>
 
-                        <td class="px-1" style="width: 160px">
+                        <td class="px-1" style="width: 100px">
                             <div class="d-flex justify-content-between align-item-center px-2 action" data-id="{{ $category->id }}" data-tb-name="categories">
                                 <div>
                                     <a href="{{ route('category.edit', $category->id) }}" class="ml-2">

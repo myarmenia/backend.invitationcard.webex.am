@@ -63,7 +63,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-12 my-2">
+                            <div class="col-12 mt-3 ">
                                     <label for="desc_{{$lng}}" class="form-label">Описание </label>
                                     <input type="text"
                                         class='form-control @error("translations.$lng.desc") _incorrectly @enderror'
@@ -75,7 +75,7 @@
                             </div>
 
                              <div class="col-12 my-2">
-                                    <label for="info_title_{{$lng}}" class="form-label">Описание </label>
+                                    {{-- <label for="info_title_{{$lng}}" class="form-label">Описание </label> --}}
                                     <input type="text"
                                         class='form-control @error("translations.$lng.info_title") _incorrectly @enderror'
                                         id="info_title_{{$lng}}" name="translations[{{$lng}}][info_title]"
@@ -86,7 +86,7 @@
                             </div>
 
                              <div class="col-12 my-2">
-                                    <label for="info_text_{{$lng}}" class="form-label">Описание </label>
+                                    {{-- <label for="info_text_{{$lng}}" class="form-label">Описание </label> --}}
                                     <input type="text"
                                         class='form-control @error("translations.$lng.info_text") _incorrectly @enderror'
                                         id="info_text_{{$lng}}" name="translations[{{$lng}}][info_text]"
@@ -96,15 +96,15 @@
                                 @enderror
                             </div>
 
-                            <div class="col-12 my-2">
+                            <div class="col-12 mt-3">
                                     <label for="info_text_{{$lng}}" class="form-label">Информация </label>
 
                                 @foreach (json_decode($tariff->translate($lng)->info_items) as $k => $item)
                                     <input type="text"
-                                        class='form-control my-2 @error("translations.$lng.info_text") _incorrectly @enderror'
-                                        id="info_text_{{$lng}}" name=""
+                                        class='form-control my-2 @error("translations.$lng.info_items") _incorrectly @enderror'
+                                        id="info_items_{{$lng}}" name="translations[{{$lng}}][info_items]"
                                         value='{{ $item }}'>
-                                    @error("translations.$lng.info_text")
+                                    @error("translations.$lng.info_items")
                                     <div class="error_message"> {{ $message }} </div>
                                      @enderror
                                 @endforeach

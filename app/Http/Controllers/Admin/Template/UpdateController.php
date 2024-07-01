@@ -12,7 +12,6 @@ class UpdateController extends Controller
     use TemplateTrait;
     public function __invoke(TemplateRequest $request)
     {
-
         $res = $this->updateOrCreate($request->all());
 
         return $res ? redirect()->route('template.index')->with('success', 'succec_message') : redirect()->route('template.index')->with('error', 'error_message');

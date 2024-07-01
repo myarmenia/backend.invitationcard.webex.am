@@ -26,7 +26,7 @@ trait PaymentRegister
                     'amount' => 10 * 100,
                     'currency' => '051',
                     'language' => 'en',
-                    'orderNumber' => $data->buy_tariff ? 'client_feedback_b_' . $data->id : 'e_' . $data->id,
+                    'orderNumber' => $data->buy_tariff ? 'client_feedback_c_' . $data->id : 'f_' . $data->id,
                     'returnUrl' => $data->buy_tariff ? url('') . "/api/promo-code-payment-result?tariff_id=$data->tariff_id&client_id=$data->id" : url('') . '/api/payment-result'
 
                 ]
