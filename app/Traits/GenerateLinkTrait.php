@@ -89,7 +89,7 @@ trait GenerateLinkTrait
             $qr_code = QRGenerate::getQR($link);
 
             WhatsAppAPI::sendImage($qr_code, $feedback);
-            WhatsAppAPI::sendMessage($qr_code, $feedback);
+            WhatsAppAPI::sendMessage($body_link, $feedback);
 
             return $link;
 
