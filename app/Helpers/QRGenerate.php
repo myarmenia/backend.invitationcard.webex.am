@@ -17,7 +17,9 @@ class QRGenerate
 
             $data = QrCode::size(200)
                 ->style('dot')
-                ->eye('circle')
+                // ->eye('circle')
+                ->eye('square')
+
                 ->gradient($from[0], $from[1], $from[2], $to[0], $to[1], $to[2], 'diagonal')
                 ->margin(1)
                 ->format('png')
@@ -26,7 +28,7 @@ class QRGenerate
             $base64 = base64_encode($data);
 
             return $base64;
-            
+
 
         } catch (\Throwable $th) {
             return false;

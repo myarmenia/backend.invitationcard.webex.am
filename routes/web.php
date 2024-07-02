@@ -68,6 +68,5 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('change-status', [ChangeStatusController::class, 'change_status'])->name('change_status');
     Route::get('delete-item/{tb_name}/{id}', [DeleteItemController::class, 'index'])->name('delete_item');
-    Route::get('/qr', [TestQRController::class, 'show']);
 
 });
