@@ -16,7 +16,7 @@ class TestQRController extends Controller
         $from = [222, 0, 255];
         $to = [0, 0, 255];
 
-        $data = QrCode::size(400)
+        $data = QrCode::size(200)
             ->style('dot')
             ->eye('circle')
             ->gradient($from[0], $from[1], $from[2], $to[0], $to[1], $to[2], 'diagonal')
