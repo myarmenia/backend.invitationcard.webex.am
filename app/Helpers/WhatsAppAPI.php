@@ -50,7 +50,7 @@ class WhatsAppAPI
         $result_data = false;
         $data = json_encode([
             'b64_file' => $base64,
-            'caption' => "Это картинка",
+            // 'caption' => "Это картинка",
             'recipient' => $feedback,
         ]);
 
