@@ -15,13 +15,16 @@ class CreateAdminUserSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::create([
-            'name' => 'Hardik Savani',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('123456')
-        ]);
+        $user = User::updateOrCreate(
+             ['email' => 'info@webex.am'],
+             [
+                'name' => 'Webex Admin',
+                'email' => 'info@webex.am',
+                'password' => bcrypt(env('ADMIN_PASS'))
+            ]);
 
-        $role = Role::create(['name' => 'Admin']);
+
+        $role = Role::updateOrCreate(['name' => 'Admin']);
 
         $permissions = Permission::pluck('id', 'id')->all();
 

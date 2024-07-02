@@ -39,3 +39,10 @@ if (!function_exists('getTariff')) {
         return Tariff::where('type', $type)->first();
     }
 }
+
+if (!function_exists('tariffs')) {
+    function tariffs()
+    {
+        return Tariff::all();
+    }
+}

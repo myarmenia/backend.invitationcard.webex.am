@@ -102,9 +102,9 @@
                                 @foreach (json_decode($tariff->translate($lng)->info_items) as $k => $item)
                                     <input type="text"
                                         class='form-control my-2 @error("translations.$lng.info_items") _incorrectly @enderror'
-                                        id="info_items_{{$lng}}" name="translations[{{$lng}}][info_items]"
+                                        id="info_items_{{$lng}}" name="translations[{{$lng}}][info_items][{{$k}}]"
                                         value='{{ $item }}'>
-                                    @error("translations.$lng.info_items")
+                                    @error("translations.$lng.info_items.$k")
                                     <div class="error_message"> {{ $message }} </div>
                                      @enderror
                                 @endforeach

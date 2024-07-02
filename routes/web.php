@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Template\TemplateCantroller;
 use App\Http\Controllers\Admin\Template\UpdateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Telegram\TelegramController;
+use App\Http\Controllers\TestQRController;
 use App\Services\ChangeStatusService;
 use Illuminate\Support\Facades\Route;
 
@@ -38,7 +39,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::prefix('tariff')->group(function () {
             Route::get('', TariffController::class)->name('index');
             Route::get('edit/{id}', \App\Http\Controllers\Admin\Tariff\EditController::class)->name('edit');
-            Route::post('update/{id}', \App\Http\Controllers\Admin\Tariff\EditController::class)->name('update');
+            Route::post('update/{id}', \App\Http\Controllers\Admin\Tariff\UpdateController::class)->name('update');
         });
     });
 
@@ -67,5 +68,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('change-status', [ChangeStatusController::class, 'change_status'])->name('change_status');
     Route::get('delete-item/{tb_name}/{id}', [DeleteItemController::class, 'index'])->name('delete_item');
+    Route::get('/qr', [TestQRController::class, 'show']);
 
 });

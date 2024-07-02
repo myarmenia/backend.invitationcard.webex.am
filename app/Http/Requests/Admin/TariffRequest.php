@@ -11,7 +11,7 @@ class TariffRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class TariffRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "price" => "required",
+            "month" => "required",
+            "translations.*.name" => "required",
+            "translations.*.desc" => "required",
+            "translations.*.info_title" => "required",
+            "translations.*.info_text" => "required",
+            "translations.*.info_items.*" => "required"
+
         ];
     }
 }

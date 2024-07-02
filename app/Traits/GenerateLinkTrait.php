@@ -2,6 +2,7 @@
 namespace App\Traits;
 
 
+use App\Helpers\QRGenerate;
 use Crypt;
 use App\Models\Form;
 use App\Models\Image;
@@ -85,8 +86,10 @@ trait GenerateLinkTrait
             $form->update(['link' => $link]);
 
             $body_link = __('messages.invitation_card_text') . $link;
-
-            WhatsAppAPI::sendMessage($body_link, $feedback);
+            $qr_code = QRGenerate::updateOrCreate($link);
+// dd($qr_code);
+            // WhatsAppAPI::sendMessage($body_link, $feedback);
+            WhatsAppAPI::sendMessage($qr_code, $feedback);
 
             return $link;
 

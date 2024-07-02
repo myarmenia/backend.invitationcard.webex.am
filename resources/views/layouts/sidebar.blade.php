@@ -7,7 +7,7 @@
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('home') ? '' : ' collapsed' }}" href="{{route('home')}}">
                 <i class="bi bi-grid"></i>
-                <span>Dashboard</span>
+                <span>Дашборд</span>
             </a>
         </li><!-- End Dashboard Nav -->
 
@@ -29,7 +29,7 @@
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('press-release-videos.*') ? '' : ' collapsed' }}"
                 href="{{ route('template.index')}}">
-                <i class="ri-file-list-2-line"></i>
+                <i class="bx bx-news"></i>
                 <span>Шаблоны</span>
             </a>
         </li>
