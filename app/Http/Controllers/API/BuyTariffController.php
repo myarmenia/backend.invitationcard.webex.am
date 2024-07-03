@@ -14,11 +14,8 @@ use Illuminate\Http\Request;
 class BuyTariffController extends BaseController
 {
     use PaymentRegister, TariffsTrait, OrderTrait, PaymentTrait;
-    // public function __invoke(BuyTariffRequest $request){
-    public function __invoke(Request $request)
-    {
+    public function __invoke(BuyTariffRequest $request){
 
-// dd($request->all());
         $lang = $request->header('Accept-Language') ?? 'am';
 
         $client_feedback = ClientFeedback::create([
