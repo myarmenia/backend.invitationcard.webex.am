@@ -18,7 +18,7 @@ class BuyTariffController extends BaseController
     public function __invoke(Request $request)
     {
 
-dd($request->all());
+// dd($request->all());
         $lang = $request->header('Accept-Language') ?? 'am';
 
         $client_feedback = ClientFeedback::create([
