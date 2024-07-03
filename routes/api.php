@@ -4,6 +4,7 @@ use App\Http\Controllers\API\BuyTariffController;
 use App\Http\Controllers\API\CheckPromoCodeController;
 use App\Http\Controllers\API\ClientFeedbackController;
 use App\Http\Controllers\API\EventResultController;
+use App\Http\Controllers\API\FeedbackToMailController;
 use App\Http\Controllers\API\FormController;
 use App\Http\Controllers\API\HomeController;
 use App\Http\Controllers\API\Payment\PromoCodePaymentResultController;
@@ -41,6 +42,9 @@ Route::group(['middleware' => ['setlang']], function ($router) {
     Route::get('tariffs', TariffsController::class);
     Route::get('check-promo-code', CheckPromoCodeController::class);
     Route::post('buy-tariff', BuyTariffController::class);
+
+    Route::post('feedback-to-mail', FeedbackToMailController::class);
+
 
 });
 
