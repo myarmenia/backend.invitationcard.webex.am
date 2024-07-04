@@ -26,6 +26,7 @@ class FormController extends BaseController
 
 
         $create_form = $this->createForm($request->all());
+        $create_form['language'] = $lang;
 
         if($create_form){
 
@@ -51,6 +52,7 @@ class FormController extends BaseController
 
             }
             else{
+
                 $redirect_url = $this->register($create_form);
 
                 if ($redirect_url == 'error_payment') {
@@ -65,6 +67,7 @@ class FormController extends BaseController
 
         }
         else{
+          
             return $this->sendError(__('messages.system_error'));
 
         }

@@ -17,7 +17,7 @@ class PromoCodePaymentResultController extends Controller
     use CheckPaymentStatusTrait, PromoCodeTrait;
     public function __invoke(Request $request){
 
-        $lang = $request->header('Accept-Language') ?? 'am';
+        $lang = $request->header('Accept-Language') && $request->header('Accept-Language') != 'hy' ? $request->header('Accept-Language') : 'am';
         app()->setLocale($lang);
 
         $order_number = $request->orderId;

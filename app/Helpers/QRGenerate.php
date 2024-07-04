@@ -5,8 +5,6 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class QRGenerate
 {
-
-
     public static function getQR(string $link)
     {
 
