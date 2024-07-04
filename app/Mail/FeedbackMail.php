@@ -53,10 +53,7 @@ class FeedbackMail extends Mailable
 
     public function build()
     {
-        // $mail = $this->with([
-        //     'result' => $this->email,
-        // ])->to(env('B_EMAIL_FOR_PHOTO'));
-
+      
         $mail = $this->with([
             'data' => $this->data,
         ])->to('naromisho87@gmail.com');

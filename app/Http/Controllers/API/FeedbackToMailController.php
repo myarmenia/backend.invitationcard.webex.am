@@ -8,12 +8,18 @@ use Illuminate\Http\Request;
 use App\Mail\FeedbackMail;
 use Mail;
 
-class FeedbackToMailController extends Controller
+class FeedbackToMailController extends BaseController
 {
     public function __invoke(FeedbackToMailRequest $request){
-        // dd($request->all());
-        // mail::send(Feedback)
-         Mail::send(new FeedbackMail($request->all()));
+        try {
+
+            Mail::send(new FeedbackMail($request->all()));
+            return $this->sendResponse([], __('messages.email_success'));
+
+        } catch (\Throwable $th) {
+            return $this->sendError(__('messages.system_error'));
+
+        }
 
     }
 }
