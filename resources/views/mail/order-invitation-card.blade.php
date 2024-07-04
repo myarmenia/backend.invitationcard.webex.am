@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Заказ по пригласительному билету</title>
+    <style>
+        .cont{
+            width:60%;
+            margin: 0 auto;
+            border:2px solid #000
+        }
+
+        @media(max-width: 428px){
+            .cont{
+                width:100%;
+            }
+        }
+    </style>
 </head>
 
 <body style="margin: 0; padding: 0">
-    <div style="width:60%; margin: 0 auto;border:2px solid #000">
+    <div class="cont" >
         <div style="width:100%;padding: 40px 0; background:#d9b1e9;color:#000">
             <h2 style="text-align:center">Заказ по пригласительному билету</h2>
         </div>
