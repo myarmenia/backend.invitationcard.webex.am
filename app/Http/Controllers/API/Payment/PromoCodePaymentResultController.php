@@ -36,11 +36,11 @@ class PromoCodePaymentResultController extends Controller
                 if ($promo_code) {
                     $body_promo_code = __('messages.promo_code_info') . $promo_code->code . ' .' . __('messages.promo_code_date') . $valid_date;
 
-                   
+
                     WhatsAppAPI::sendMessage($body_promo_code, $client_feedback->feedback);
 
                     echo "<script type='text/javascript'>
-                        window.location = 'https://invitationcard.webex.am/am?promo_code=$promo_code'
+                        window.location = 'https://invitationcard.webex.am/am?promo_code=$promo_code->code'
                     </script>";
                 }
 
