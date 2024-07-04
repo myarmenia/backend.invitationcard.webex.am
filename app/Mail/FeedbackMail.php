@@ -53,10 +53,10 @@ class FeedbackMail extends Mailable
 
     public function build()
     {
-      
+
         $mail = $this->with([
             'data' => $this->data,
-        ])->to('naromisho87@gmail.com');
+        ])->to('lara@webex.am');
 
         return $mail;
 
