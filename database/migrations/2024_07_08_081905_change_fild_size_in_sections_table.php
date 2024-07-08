@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('sections', function (Blueprint $table) {
-            $table->mediumText('address_link')->change();
+            $table->mediumText('address_link')->nullable()->change();
 
         });
     }
