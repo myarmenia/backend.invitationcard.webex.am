@@ -27,6 +27,7 @@ class SectionsResource extends JsonResource
             "time" => Carbon::parse($this->time)->format('H:i'),
             "address" => $this->address,
             "address_link" => $this->address_link,
+            "location_name" => $this->location_name ?? null,
             "images" => ImagesResourse::collection($this->images)
 
         ];
