@@ -6,7 +6,6 @@ use GuzzleHttp\Client;
 
 class WhatsAppAPI
 {
-
     public static function sendMessage(string $body, string $feedback)
     {
         $whatsapp_id = env('WHATSAPP_ID');
