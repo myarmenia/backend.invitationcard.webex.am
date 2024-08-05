@@ -52,7 +52,7 @@ trait GenerateLinkTrait
             $body_link =  __('messages.invitation_card_text') . $link;
 
             $qr_code = QRGenerate::getQR($link);
-
+// dd( $qr_code);
             WhatsAppAPI::sendImage($qr_code, $feedback);
             WhatsAppAPI::sendMessage($body_link, $feedback);
 

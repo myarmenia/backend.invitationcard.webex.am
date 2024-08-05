@@ -10,6 +10,7 @@ use App\Http\Controllers\API\HomeController;
 use App\Http\Controllers\API\Payment\PromoCodePaymentResultController;
 use App\Http\Controllers\API\Payment\ResultController;
 use App\Http\Controllers\API\TariffsController;
+use App\Http\Controllers\API\TestController;
 use App\Http\Controllers\Telegram\TelegramController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,9 @@ Route::group(['middleware' => ['setlang']], function ($router) {
     Route::post('buy-tariff', BuyTariffController::class);
 
     Route::post('feedback-to-mail', FeedbackToMailController::class);
+
+    Route::get('test-for-generate-link', TestController::class);
+
 
 
 });
