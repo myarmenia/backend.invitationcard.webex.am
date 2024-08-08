@@ -19,17 +19,7 @@ class EventResultController extends BaseController
         $token = $request->token;
         $form = Form::where('token', $token)->first();
 
-        // if(isset($request->p_token)){
-        //     $id = $request->token / 2024;
-        //     $form = Form::where(['promo_code' => $request->p_token, 'id' => $id])->first();
-        // }
-        // else{
-        //     $order = Order::where(['status' => 1, 'order_id' => $token])->first();
-        //     $form = $order ? $order->form : null ;
-        // }
-
         if($form){
-            // $form = $order->form;
             return $this->sendResponse(new EventResultResource($form), 'success');
         }
 

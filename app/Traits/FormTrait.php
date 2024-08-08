@@ -75,7 +75,9 @@ trait FormTrait {
                 if (count($images) > 0) {
 
                     foreach ($images as $image) {
-                        $image_path = FileUploadService::uploadBase64($image, "forms/$form_id/sections/$section->id");
+                        // $image_path = FileUploadService::uploadBase64($image, "forms/$form_id/sections/$section->id");
+                        $image_path = FileUploadService::upload($image, "forms/$form_id/sections/$section->id");
+
 
                         Image::create([
                             'section_id' => $section->id,

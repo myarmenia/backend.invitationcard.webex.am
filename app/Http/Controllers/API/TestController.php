@@ -24,7 +24,6 @@ class TestController extends Controller
                     window.location = 'https://invitationcard.webex.am/am/?event_url=$link'
                 </script>";
         }
-        // return $this->sendResponse(new HomeResource([]), 'success');
 
     }
 }
