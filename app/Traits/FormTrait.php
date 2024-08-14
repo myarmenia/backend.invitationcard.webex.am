@@ -30,7 +30,8 @@ trait FormTrait {
         // ======== add logo path ======================
 
         if (isset($data['logo_path'])) {
-            $logo_path = FileUploadService::uploadBase64($data['logo_path'], 'logo/' . $form->id);
+            // $logo_path = FileUploadService::uploadBase64($data['logo_path'], 'logo/' . $form->id);
+            $logo_path = FileUploadService::upload($data['logo_path'], 'logo/' . $form->id);
 
             $form->update(['logo_path' => $logo_path]);
         }

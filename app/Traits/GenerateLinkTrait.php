@@ -34,6 +34,7 @@ trait GenerateLinkTrait
             $tariff_type = $this->getTariff($tariff_id)->type;
 
             $link = "$app_fron_url$lang$template_route?$link_name&token=$token";
+            $linkForQr = "$app_fron_url$lang$template_route?token=$token";
 
             if (in_array($tariff_type, ['standart', 'premium'])) {
                 $promo_code = $this->generatePromoCode($tariff_id);
@@ -45,14 +46,13 @@ trait GenerateLinkTrait
                 }
             }
 
-            // $link = "$app_fron_url$lang$template_route?$link_name&token=$token";
 
             $form->update(['link' => $link]);
 
             $body_link =  __('messages.invitation_card_text') . $link;
 
-            $qr_code = QRGenerate::getQR($link);
-// dd( $qr_code);
+            $qr_code = QRGenerate::getQR($linkForQr);
+        
             WhatsAppAPI::sendImage($qr_code, $feedback);
             WhatsAppAPI::sendMessage($body_link, $feedback);
 
