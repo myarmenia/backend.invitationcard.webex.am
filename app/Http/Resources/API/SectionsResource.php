@@ -28,7 +28,8 @@ class SectionsResource extends JsonResource
             "address" => $this->address,
             "address_link" => $this->address_link,
             "location_name" => $this->location_name ?? null,
-            "images" => ImagesResourse::collection($this->images)
+            "images" => ImagesResourse::collection($this->images),
+            "json_field" => $this->json_field ? json_decode($this->json_field) : null
 
         ];
     }

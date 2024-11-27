@@ -67,7 +67,7 @@ class FormController extends BaseController
 
         }
         else{
-          
+
             return $this->sendError(__('messages.system_error'));
 
         }

@@ -23,6 +23,7 @@ trait FormTrait {
             'sound_path' => $data['sound_path'] ?? null,
             'token' => $token,
             'age' => $data['age'] ?? null
+
         ];
 
         $form = Form::create($form_data);
@@ -69,6 +70,11 @@ trait FormTrait {
                 if (isset($sec['images'])) {
                     $images = $sec['images'];
                 }
+                
+                if (isset($sec['json_field'])) {
+                    $sec['json_field'] = json_encode($sec['json_field']);
+                }
+
 
                 unset($sec['images']);
                 $section = Section::create($sec);
