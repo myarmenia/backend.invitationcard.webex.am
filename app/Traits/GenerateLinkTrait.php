@@ -52,7 +52,7 @@ trait GenerateLinkTrait
             $body_link =  __('messages.invitation_card_text') . $link;
 
             $qr_code = QRGenerate::getQR($linkForQr);
-        
+
             WhatsAppAPI::sendImage($qr_code, $feedback);
             WhatsAppAPI::sendMessage($body_link, $feedback);
 
@@ -83,13 +83,16 @@ trait GenerateLinkTrait
             // $token = $form->id * 2024;
             $token = $form->token;
 
+            // Кодируем $link_name
+            $link_name_encoded = urlencode($link_name);
             $link = "$app_fron_url$lang$template_route?$link_name&p_token=$form->promo_code&token=$token";
 
             $form->update(['link' => $link]);
-
             $body_link = __('messages.invitation_card_text') . $link;
 
-            $qr_code = QRGenerate::getQR($link);
+            $qr_link = "$app_fron_url$lang$template_route?$link_name_encoded&p_token=$form->promo_code&token=$token";
+
+            $qr_code = QRGenerate::getQR($qr_link);
 
             WhatsAppAPI::sendImage($qr_code, $feedback);
             WhatsAppAPI::sendMessage($body_link, $feedback);

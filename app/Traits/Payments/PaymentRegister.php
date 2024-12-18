@@ -24,8 +24,8 @@ trait PaymentRegister
 
                     'userName' => env('ACBA_USER_NAME'),
                     'password' => env('ACBA_PASSWORD'),
-                    // 'amount' => $amount * 100,
-                    'amount' => 10 * 100,
+                    'amount' => $amount * 100,
+                    // 'amount' => 10 * 100,
                     'currency' => '051',
                     'language' => $lang,
                     'orderNumber' => $data->buy_tariff ? 'client_feedback_f_' . $data->id : 'l_' . $data->id,
